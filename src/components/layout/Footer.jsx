@@ -10,6 +10,7 @@ import Tiktok from "../../assets/icons/social/Tiktok";
 import Instagram from "../../assets/icons/social/Instagram";
 import Facebook from "../../assets/icons/social/Facebook";
 import Twitter from "@/assets/icons/social/Twitter";
+import { companyLinks } from "../../data/menu/companyLinks";
 
 const Footer = () => {
   return (
@@ -29,7 +30,7 @@ const Footer = () => {
               borderColor="border-[var(--color-white)]"
               placeholderColor="placeholder:text-[color:var(--color-white)]"
               textColor="text-[color:var(--color-white)]"
-              wrapperClassName="w-[57%] 2xl:w-[70%] "
+              fieldContainerClassName="w-[57%] 2xl:w-[70%] "
             />
             <Button
               text="Submit"
@@ -37,6 +38,7 @@ const Footer = () => {
             />
           </form>
         </div>
+        <Link href="/">
         <Image
           src={logoWhite}
           alt=""
@@ -44,6 +46,7 @@ const Footer = () => {
           height={61}
           className="pt-8"
         />
+        </Link>
       </div>
 
       <div className="px-4 pt-6  bg-[var(--color-neutrals-gray-10)] rounded-3xl lg:px-8 lg:pt-16">
@@ -89,18 +92,11 @@ const Footer = () => {
               Useful links
             </h6>
             <ul className="font-open-sans text-[var(--color-light-gray)] font-semibold text-[16px] flex flex-col gap-2 mt-4">
-              <li>
-                <Link href="/about">About</Link>
-              </li>
-              <li>
-                <Link href="/contact">Contact</Link>
-              </li>
-              <li>
-                <Link href="/privacypolicy">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link href="/termsconditions">Terms & Conditions</Link>
-              </li>
+              {companyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 

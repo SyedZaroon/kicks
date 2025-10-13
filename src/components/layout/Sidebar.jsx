@@ -1,20 +1,15 @@
 "use client";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
+import { companyLinks } from "../../data/menu/companyLinks";
 
 export default function SimpleDropdown() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const links = [
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-    { href: "/privacypolicy", label: "Privacy Policy" },
-    { href: "/termsconditions", label: "Terms & Conditions" },
-  ];
 
   return (
-    <div className="w-full">
+    <div className="">
       {/* Mobile Dropdown */}
       <select
         value={pathname}
@@ -27,7 +22,7 @@ export default function SimpleDropdown() {
         id="sidebar-dropdown"
         name="sidebar-dropdown"
       >
-        {links.map((link) => (
+        {companyLinks.map((link) => (
           <option key={link.href} value={link.href}>
             {link.label}
           </option>
@@ -35,8 +30,8 @@ export default function SimpleDropdown() {
       </select>
 
       {/* Desktop Links */}
-      <ul className="hidden xl:flex flex-col text-sm font-semibold font-rubik">
-        {links.map((link) => (
+      <ul className="hidden xl:flex flex-col text-sm font-semibold font-rubik xl:w-[300px] ">
+        {companyLinks.map((link) => (
           <li
             key={link.href}
             className={`py-4 px-5 transition-colors duration-200 ${

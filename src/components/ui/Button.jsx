@@ -9,7 +9,7 @@ const Button = ({
   rightIcon: RightIcon,
 }) => {
   const baseClasses =
-    "rounded-lg font-inter weight-medium text-sm flex items-center gap-1 px-4 py-[7.5px] hover:outline-1 hover:outline-[var(--color-dark-gray)] ";
+    "rounded-lg font-inter weight-medium text-sm flex items-center gap-1 p-4 hover:outline-1 hover:outline-[var(--color-dark-gray)] ";
 
   const buttonClasses = {
     fill: {

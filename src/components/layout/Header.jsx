@@ -21,7 +21,9 @@ const Header = () => {
         <Icon icon={SearchFill} type="text" size={28} />
       </div>
 
-      <Image src={logo} alt="Logo" className='lg:w-[128px] lg:h-[32px] w-[80px] h-[20px]' />
+     <Link href="/">
+     <Image src={logo} alt="Logo" className='lg:w-[128px] lg:h-[32px] w-[80px] h-[20px]' />
+     </Link>
 
       <ul className="flex lg:gap-[40px] items-center md:gap-[15px] gap-1 font-rubik text-sm font-semibold">
         <li className='lg:block hidden '>

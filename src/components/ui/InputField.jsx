@@ -12,6 +12,9 @@ const InputField = ({
   placeholderColor = "placeholder:text-[color:var(--color-neutrals-gray-6)]",
   textColor = "text-[color:var(--color-neutrals-gray-10)]",
   wrapperClassName = "",
+  fieldContainerClassName = "",
+  id = "",
+  name = "",
 }) => {
    const baseClasses = {
      wrapper:
@@ -58,6 +61,7 @@ const InputField = ({
 
   return (
     <>
+      <div className={`${fieldContainerClassName}`}>
       {label && (
         <p
           className={`font-inter mb-2 text-[14px] ${state === "disabled" ? "text-[color:var(--color-neutrals-gray-3)]" : "text-[color:var(--color-dark-gray)]"}`}
@@ -67,7 +71,9 @@ const InputField = ({
       )}
 
       <div className={`${baseClasses.wrapper} ${current.wrapper}`}>
-        <input
+          <input
+            id={id}
+            name={name}
           type={type}
           placeholder={placeholder}
           disabled={state === "disabled"}
@@ -95,6 +101,7 @@ const InputField = ({
       </div>
 
       {helperText && <p className={current.helper}>{helperText}</p>}
+      </div>
     </>
   );
 };

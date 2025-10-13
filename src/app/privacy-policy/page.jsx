@@ -1,9 +1,9 @@
-import ContactPage from "@/pages/ContactPage";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import React from "react";
 
 const page = () => {
   return (
-    <ContactPage />
+    <PrivacyPolicy />
   );
 };
 

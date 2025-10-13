@@ -1,9 +1,9 @@
-import ContactPage from "@/pages/ContactPage";
+import TermsAndConditions from "@/pages/TermsAndConditions";
 import React from "react";
 
 const page = () => {
   return (
-    <ContactPage />
+   <TermsAndConditions />
   );
 };
 
