@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 
 
 // import required modules
-import { Pagination, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import ReviewCard from "../blocks/ReviewCard";
 import review1 from "../../assets/images/reviewImages/review1.png";
 import review2 from "../../assets/images/reviewImages/review2.png";
@@ -22,8 +22,7 @@ export default function App() {
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
-        pagination={{ clickable: true }}
-        modules={[Pagination, Autoplay]}
+        modules={[Autoplay]}
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
@@ -36,16 +35,16 @@ export default function App() {
         }}
       >
         <SwiperSlide>
-          <ReviewCard reviewImage={review1} productReviewImage={productReview1}/>
+          <ReviewCard reviewImage={review1} productReviewImage={productReview1} rating={3}/>
         </SwiperSlide>
         <SwiperSlide>
-          <ReviewCard reviewImage={review2} productReviewImage={productReview2}/>
+          <ReviewCard reviewImage={review2} productReviewImage={productReview2} rating={5}/>
         </SwiperSlide>
         <SwiperSlide>
-          <ReviewCard reviewImage={review3} productReviewImage={productReview3}/>
+          <ReviewCard reviewImage={review3} productReviewImage={productReview3} rating={4}/>
         </SwiperSlide>
         <SwiperSlide>
-          <ReviewCard reviewImage={review2} productReviewImage={productReview2}/>
+          <ReviewCard reviewImage={review2} productReviewImage={productReview2} rating={4.5}/>
         </SwiperSlide>
       </Swiper>
     </>
