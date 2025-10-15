@@ -3,7 +3,7 @@ import React from "react";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="w-full flex mt-2 mb-8 flex-col gap-8 xl:flex-row xl:my-16 xl:gap-0">
+    <div className="section-margin flex mt-2 mb-8 flex-col gap-8 xl:flex-row xl:my-16 xl:gap-0">
       <Sidebar />
       <div>
         <h1 className="font-rubik text-2xl font-semibold">Privacy Policy</h1>

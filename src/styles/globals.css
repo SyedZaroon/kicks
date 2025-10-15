@@ -50,8 +50,67 @@
   font-family: var(--font-inter);
 }
 
+@utility section-margin {
+  margin-inline: clamp(16px, 4vw, 60px);
+}
+@utility section-heading{
+  font-size: clamp(24px, 6.5vw, 74px);
+  font-family: var(--font-rubik);
+  font-weight: 600;
+  line-height: 100%;
+}
+
+@utility h1 {
+  font-size: clamp(36px, 11.8vw, 48px);
+  font-family: var(--font-rubik);
+  font-weight: 600;
+  line-height: 100%;
+}
+
+@utility h2 {
+  font-size: clamp(32px, 11.8vw, 36px);
+  font-family: var(--font-rubik);
+  font-weight: 600;
+  line-height: 100%;
+}
+
+@utility h3 {
+  font-size: clamp(26px, 11.8vw, 32px);
+  font-family: var(--font-rubik);
+  font-weight: 600;
+  line-height: 100%;
+}
+
+@utility h4 {
+  font-size: clamp(16px, 2vw, 24px);
+  font-family: var(--font-rubik);
+  font-weight: 600;
+  line-height: 100%;
+}
+
+@utility h5 {
+  font-size: clamp(20px, 11.8vw, 26px);
+  font-family: var(--font-rubik);
+  font-weight: 600;
+  line-height: 100%;
+}
+
+@utility h6 {
+  font-size: 16px;
+  font-family: var(--font-rubik);
+  font-weight: 600;
+  line-height: 100%;
+}
+
+@utility p {
+  font-size: 16px;
+  font-family: var(--font-open-sans);
+  font-weight: 400;
+  line-height: 30px;
+}
+
 body {
   background-color: var(--color-bg);
-  padding-inline: clamp(16px, 4vw, 60px);
   padding-block: clamp(24px, 2vw, 32px);
 }
+

@@ -9,7 +9,9 @@ const ContactForm = () => {
               <InputField label="Name" type="text" name="name" placeholder='Enter your name' fieldContainerClassName='xl:w-[100%]' />
               <InputField label="Email" type="email" name="email" placeholder='Enter your email' />
               <InputField label="Message" type="text" name="message" placeholder='Enter your message' fieldContainerClassName='xl:col-span-2' />
-              <Button label="Send" className='w-full justify-center xl:col-span-2' />
+              <Button className='w-full justify-center xl:col-span-2'>
+                Send
+              </Button>
       </div>
     </form>
   )

@@ -9,8 +9,8 @@ import BarsFill from '../../assets/icons/fill/BarsFill'
 
 const Header = () => {
   return (
-    <header className="w-full bg-[var(--color-natural-light)] rounded-3xl p-4 lg:p-8 flex justify-between items-center">
-      <nav className="lg:flex lg:gap-[40px] gap-[15px] font-rubik text-sm font-semibold hidden">
+    <div className="section-margin bg-[var(--color-natural-light)] rounded-3xl p-4 lg:p-8 flex justify-between items-center">
+      <nav className="lg:flex lg:gap-[40px] gap-[15px] h6 hidden">
         <Link href="/">New Drops</Link>
         <Link href="/">Men</Link>
         <Link href="/">Women</Link>
@@ -21,13 +21,22 @@ const Header = () => {
         <Icon icon={SearchFill} type="text" size={28} />
       </div>
 
-     <Link href="/">
-     <Image src={logo} alt="Logo" className='lg:w-[128px] lg:h-[32px] w-[80px] h-[20px]' />
-     </Link>
+      <Link href="/">
+        <Image
+          src={logo}
+          alt="Logo"
+          className="lg:w-[128px] lg:h-[32px] w-[80px] h-[20px]"
+        />
+      </Link>
 
       <ul className="flex lg:gap-[40px] items-center md:gap-[15px] gap-1 font-rubik text-sm font-semibold">
-        <li className='lg:block hidden '>
-          <Icon icon={SearchFill} type="text" size={28} className="w-[60px] h-[60px]" />
+        <li className="lg:block hidden ">
+          <Icon
+            icon={SearchFill}
+            type="text"
+            size={28}
+            className="w-[60px] h-[60px]"
+          />
         </li>
         <li>
           <Icon icon={UserFill} type="text" size={28} />
@@ -36,7 +45,7 @@ const Header = () => {
           <span>0</span>
         </li>
       </ul>
-    </header>
+    </div>
   );
 }
 

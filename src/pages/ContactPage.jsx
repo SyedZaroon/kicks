@@ -5,7 +5,7 @@ import ContactForm from "@/components/forms/ContactForm";
 const ContactPage = () => {
   return (
     <>
-      <div className="w-full flex mt-2 mb-8 flex-col gap-8 xl:flex-row xl:my-16 xl:gap-0">
+      <div className="section-margin flex mt-2 mb-8 flex-col gap-8 xl:flex-row xl:my-16 xl:gap-0">
         <Sidebar />
         <div className="xl:w-full">
           <h1 className="font-rubik text-2xl font-semibold">
