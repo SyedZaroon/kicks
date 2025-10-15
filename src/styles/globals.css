@@ -53,6 +53,9 @@
 @utility section-margin {
   margin-inline: clamp(16px, 4vw, 60px);
 }
+@utility section-padding {
+  padding-inline: clamp(16px, 4vw, 60px);
+}
 @utility section-heading{
   font-size: clamp(24px, 6.5vw, 74px);
   font-family: var(--font-rubik);
@@ -75,7 +78,7 @@
 }
 
 @utility h3 {
-  font-size: clamp(26px, 11.8vw, 32px);
+  font-size: clamp(24px, 3vw, 32px);
   font-family: var(--font-rubik);
   font-weight: 600;
   line-height: 100%;

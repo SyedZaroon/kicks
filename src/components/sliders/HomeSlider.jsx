@@ -9,7 +9,6 @@ import slide2 from "../../assets/images/homeSliderImages/slide2.png";
 
 // Import Swiper styles
 import "swiper/css";
-
 import "../../styles/homeSlider.css";
 
 // import required modules

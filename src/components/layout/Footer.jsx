@@ -115,7 +115,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-8 lg:mt-16">
-          <Image src={footerLogo} alt="" />
+          <Image src={footerLogo} alt="" className="m-auto" />
         </div>
       </div>
     </footer>

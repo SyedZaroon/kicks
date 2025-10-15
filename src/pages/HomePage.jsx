@@ -1,7 +1,8 @@
 import React from 'react'
 import HomeSlider from '@/components/sliders/HomeSlider'
-import ProductCard from '@/components/blocks/ProductCard'
 import FeatureProducts from '@/components/sections/FeatureProducts';
+import ProductCategories from '@/components/sections/ProductCategories';
+import ReviewSection from '@/components/sections/ReviewSection';
 
 const HomePage = () => {
   return (
@@ -14,6 +15,12 @@ const HomePage = () => {
       </div>
       <div className="mb-24 section-margin">
         <FeatureProducts />
+      </div>
+      <div className="mb-24">
+        <ProductCategories />
+      </div>
+      <div className="mb-24 section-margin">
+        <ReviewSection />
       </div>
     </div>
   );
