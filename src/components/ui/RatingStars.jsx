@@ -15,7 +15,7 @@ const RatingStars = ({ rating = 0 }) => {
 
   return (
     <div className="flex gap-1 text-[var(--color-yellow)]">
-      {Array.from({ length: fullStars }).map((index) => (
+      {Array.from({ length: fullStars }).map((_,index) => (
         <StarFill key={`full-${index}`} className="w-[16px] h-[17px]" />
       ))}
 

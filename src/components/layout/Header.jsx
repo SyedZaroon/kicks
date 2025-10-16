@@ -12,8 +12,8 @@ const Header = () => {
     <div className="section-margin bg-[var(--color-natural-light)] rounded-3xl p-4 lg:p-8 flex justify-between items-center">
       <nav className="lg:flex lg:gap-[40px] gap-[15px] h6 hidden">
         <Link href="/">New Drops</Link>
-        <Link href="/">Men</Link>
-        <Link href="/">Women</Link>
+        <Link href="/product/men">Men</Link>
+        <Link href="/product/women">Women</Link>
       </nav>
 
       <div className="lg:hidden flex md:gap-[15px] gap-1">
