@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import CartItem from "@/components/sections/CartItem";
 import OrderSummary from "@/components/sections/OrderSummary";
 import PromoCode from "@/components/ui/PromoCode";
@@ -80,20 +80,18 @@ const CartPage = () => {
   const isEmpty = cartItems.length === 0;
 
   return (
-    <div className="min-h-screen bg-[var(--color-bg)]">
+    <div className="min-h-screen bg-bg">
       {/* Hero Section */}
-      <div className="bg-[var(--color-light-gray)] py-8 lg:py-12">
+      <div className="bg-light-gray py-8 lg:py-12">
         <div className="section-padding">
           <div className="max-w-6xl mx-auto">
             <div className="text-center lg:text-left">
-              <p className="text-sm text-[var(--color-gray)] mb-2">
+              <p className="text-sm text-gray mb-2">
                 Enjoy up to 60% off thousands of styles during the End of Year
                 sale - while supplies last. No code needed.
               </p>
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                <h1 className="h2 text-[var(--color-dark-gray)]">
-                  Saving to celebrate
-                </h1>
+                <h1 className="h2 text-dark-gray">Saving to celebrate</h1>
               </div>
             </div>
           </div>
@@ -107,12 +105,8 @@ const CartPage = () => {
             // Empty Cart State
             <div className="text-center py-16">
               <div className="bg-white rounded-lg p-8 lg:p-12 max-w-md mx-auto">
-                <h2 className="h2 text-[var(--color-dark-gray)] mb-4">
-                  Your cart is empty
-                </h2>
-                <p className="text-[var(--color-gray)] mb-6">
-                  Add some items to get started
-                </p>
+                <h2 className="h2 text-dark-gray mb-4">Your cart is empty</h2>
+                <p className="text-gray mb-6">Add some items to get started</p>
                 <Button
                   onClick={() => (window.location.href = "/")}
                   state="primary"
@@ -129,12 +123,10 @@ const CartPage = () => {
                 <div className="space-y-6">
                   {/* Header */}
                   <div className="flex items-center justify-between">
-                    <h2 className="h2 text-[var(--color-dark-gray)]">
-                      Your Bag
-                    </h2>
+                    <h2 className="h2 text-dark-gray">Your Bag</h2>
                   </div>
 
-                  <p className="text-[var(--color-gray)] text-sm">
+                  <p className="text-gray text-sm">
                     Items in your bag not reserved- check out now to make them
                     yours.
                   </p>

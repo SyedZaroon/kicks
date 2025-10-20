@@ -1,5 +1,5 @@
 import Sidebar from "@/components/layout/Sidebar";
-import React from "react";
+;
 import ContactForm from "@/components/forms/ContactForm";
 
 const ContactPage = () => {
@@ -9,12 +9,12 @@ const ContactPage = () => {
         <Sidebar />
         <div className="xl:w-full">
           <h1 className="font-rubik text-2xl font-semibold">
-            <span className="text-[var(--color-blue)]">Say Hello!</span> Got a
+            <span className="text-blue font-ru">Say Hello!</span> Got a
             question?
           </h1>
 
           <div>
-            <p className="font-open-sans text-[var(--color-dark-gray)]  text-[16px]">
+            <p className="font-open-sans text-dark-gray text-[16px]">
               We are here to help you with any questions you may have.
             </p>
           </div>

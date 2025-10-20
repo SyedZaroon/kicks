@@ -1,10 +1,8 @@
 import TermsAndConditions from "@/pages/TermsAndConditions";
-import React from "react";
+;
 
-const page = () => {
-  return (
-   <TermsAndConditions />
-  );
+const TermsAndConditionsPage = () => {
+  return <TermsAndConditions />;
 };
 
-export default page;
+export default TermsAndConditionsPage;

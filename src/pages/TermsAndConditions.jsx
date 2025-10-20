@@ -1,5 +1,5 @@
 import Sidebar from "@/components/layout/Sidebar";
-import React from "react";
+;
 
 const TermsAndConditions = () => {
   return (
@@ -10,7 +10,7 @@ const TermsAndConditions = () => {
           Terms and Conditions
         </h1>
 
-        <div className="mt-6 font-open-sans text-[var(--color-dark-gray)]  text-[16px]">
+        <div className="mt-6 font-open-sans text-dark-gray text-[16px]">
           <p className="mb-6">
             At <span className="font-semibold">Kicks</span>, we value your
             privacy and are committed to protecting your personal data. This

@@ -15,9 +15,9 @@ export default function SimpleDropdown() {
         value={pathname}
         onChange={(e) => router.push(e.target.value)}
         className="
-          text-[var(--color-dark-gray)] font-rubik text-sm font-semibold w-full
-          rounded-[48px] border-[1px] border-[var(--color-dark-gray)]
-          p-4 focus:outline-none focus:border-[var(--color-blue)] xl:hidden
+          text-dark-gray font-rubik text-sm font-semibold w-full
+          rounded-[48px] border-[1px] border-dark-gray
+          p-4 focus:outline-none focus:border-blue xl:hidden
         "
         id="sidebar-dropdown"
         name="sidebar-dropdown"
@@ -36,16 +36,16 @@ export default function SimpleDropdown() {
             key={link.href}
             className={`py-4 px-5 transition-colors duration-200 ${
               pathname === link.href
-                ? "text-[var(--color-blue)] border-l-3 border-[var(--color-blue)]"
-                : "text-[var(--color-dark-gray)] hover:text-[var(--color-blue)]"
+                ? "text-blue border-l-3 border-blue"
+                : "text-dark-gray hover:text-blue"
             }`}
           >
             <Link
               href={link.href}
               className={`transition-colors duration-200 ${
                 pathname === link.href
-                  ? "text-[var(--color-blue)] "
-                  : "text-[var(--color-dark-gray)] hover:text-[var(--color-blue)]"
+                  ? "text-blue "
+                  : "text-dark-gray hover:text-blue"
               }`}
             >
               {link.label}

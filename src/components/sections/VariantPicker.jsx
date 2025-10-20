@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "../ui/Button";
 import Icon from "../ui/Icon";
 import Heart from "@/assets/icons/outline/HeartOutline";
@@ -55,9 +55,9 @@ const VariantPicker = () => {
       <div>
         <h6 className="h6">Color</h6>
         <div className="mt-4 flex gap-4 flex-wrap">
-          {colorOptions.map((colorObj) => (
+          {colorOptions.map((colorObj, idx) => (
             <RadioButton
-              key={colorObj.name}
+              key={idx}
               name="color"
               value={colorObj.name}
               type="color"
@@ -73,9 +73,9 @@ const VariantPicker = () => {
       <div>
         <h6 className="h6">Size</h6>
         <div className="mt-4 flex gap-3 flex-wrap">
-          {sizeOptions.map((size) => (
+          {sizeOptions.map((size, idx) => (
             <RadioButton
-              key={size}
+              key={idx}
               name="size"
               value={size}
               label={size}

@@ -1,10 +1,8 @@
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
-import React from "react";
+;
 
-const page = () => {
-  return (
-    <PrivacyPolicy />
-  );
+const PrivacyPolicyPage = () => {
+  return <PrivacyPolicy />;
 };
 
-export default page;
+export default PrivacyPolicyPage;

@@ -1,5 +1,5 @@
 import Sidebar from '@/components/layout/Sidebar'
-import React from 'react'
+
 
 const AboutPage = () => {
   return (
@@ -8,7 +8,7 @@ const AboutPage = () => {
       <div>
         <h1 className="font-rubik text-2xl font-semibold">About Us</h1>
 
-        <div className="mt-6 font-open-sans text-[var(--color-dark-gray)]  text-[16px]">
+        <div className="mt-6 font-open-sans text-dark-gray text-[16px]">
           <p className="">
             At Kicks, we believe that great shoes don’t just complete an outfit
             — they define your walk, your comfort, and your confidence. Founded
@@ -23,6 +23,6 @@ const AboutPage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default AboutPage

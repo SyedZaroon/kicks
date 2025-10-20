@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 
 const CheckBox = ({
   label = "",
@@ -23,19 +23,15 @@ const CheckBox = ({
     flex items-center justify-center w-5 h-5 border rounded-sm
     ${
       checked
-        ? "bg-[var(--color-dark-gray)] border-[var(--color-dark-gray)]"
-        : "border-[var(--color-neutrals-gray-3)] bg-transparent"
+        ? "bg-dark-gray border-dark-gray"
+        : "border-neutrals-gray-3 bg-transparent"
     }
   `;
 
   // 🎨 Color filter box style
   const colorCircle = `
     w-8 h-8 rounded-[8px] outline outline-1
-    ${
-      checked
-        ? "outline-[var(--color-dark-gray)] outline-offset-2"
-        : "outline-transparent"
-    }
+    ${checked ? "outline-dark-gray outline-offset-2" : "outline-transparent"}
   `;
 
   // 🔘 Button-style checkbox (for size/fit filters)
@@ -43,14 +39,10 @@ const CheckBox = ({
     px-4 py-2 border text-sm font-inter font-medium rounded-md
     ${
       checked
-        ? "bg-[var(--color-dark-gray)] text-white border-[var(--color-dark-gray)]"
-        : "border-[var(--color-neutrals-gray-3)] text-[var(--color-dark-gray)]"
+        ? "bg-dark-gray text-white border-dark-gray"
+        : "border-neutrals-gray-3 text-dark-gray"
     }
-    ${
-      disabled
-        ? "opacity-50 cursor-not-allowed"
-        : "hover:border-[var(--color-dark-gray)]"
-    }
+    ${disabled ? "opacity-50 cursor-not-allowed" : "hover:border-dark-gray"}
   `;
 
   return (
@@ -93,9 +85,7 @@ const CheckBox = ({
 
       {/* Label only for default or color types */}
       {type !== "button" && (
-        <span className="text-sm font-medium text-[var(--color-dark-gray)]">
-          {label}
-        </span>
+        <span className="text-sm font-medium text-dark-gray">{label}</span>
       )}
     </label>
   );

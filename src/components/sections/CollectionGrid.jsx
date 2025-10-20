@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import ProductCard from "../ui/ProductCard";
 import { productData } from "../../data/productData";
@@ -50,7 +50,7 @@ const CollectionGrid = () => {
           disabled={currentPage === 1}
           type="outline"
           state="primary"
-          className="!text-[var(--color-dark-gray)]"
+          className="!text-dark-gray"
           leftIcon={ChevronForwordOutline}
         >
           Prev
@@ -63,7 +63,7 @@ const CollectionGrid = () => {
               key={page}
               onClick={() => setCurrentPage(page)}
               type="outline"
-              className="!text-[var(--color-dark-gray)]"
+              className="!text-dark-gray"
             >
               {page}
             </Button>
@@ -79,7 +79,7 @@ const CollectionGrid = () => {
           state="primary"
           rightIcon={ChevronForwordOutline}
           iconclass="rotate-180"
-          className="!text-[var(--color-dark-gray)]"
+          className="!text-dark-gray"
         >
           Next
         </Button>

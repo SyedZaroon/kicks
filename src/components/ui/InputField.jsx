@@ -1,59 +1,53 @@
-import React from "react";
+"use client";
 
 const InputField = ({
   label = "",
   placeholder = "Placeholder",
   type = "text",
   helperText = "",
-  state = "default", 
+  state = "default",
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
-  borderColor = "border-[var(--color-dark-gray)]",
-  placeholderColor = "placeholder:text-[color:var(--color-neutrals-gray-6)]",
-  textColor = "text-[color:var(--color-neutrals-gray-10)]",
+  borderColor = "border-dark-gray",
+  placeholderColor = "placeholder:text-neutrals-gray-6",
+  textColor = "text-neutrals-gray-10",
   wrapperClassName = "",
   fieldContainerClassName = "",
   id = "",
   name = "",
+  value = "",
+  onChange = () => {},
 }) => {
-   const baseClasses = {
-     wrapper:
-       `flex py-[14.5px] px-4 justify-between items-center rounded-lg border ${wrapperClassName}`,
-     input:
-       `font-inter appearance-none outline-none border-none bg-transparent focus:ring-0 flex-1`,
-     helper: `font-inter mt-1 text-[12px]`,
-   };
-    
+  const baseClasses = {
+    wrapper: `flex py-[14.5px] px-4 justify-between items-center rounded-lg border ${wrapperClassName}`,
+    input: `font-inter appearance-none outline-none border-none bg-transparent focus:ring-0 flex-1`,
+    helper: `font-inter mt-1 text-[12px]`,
+  };
+
   const stateClasses = {
     default: {
-      wrapper:
-        `${borderColor} focus-within:border-[var(--color-neutrals-gray-4)]`,
-      input:
-        `${textColor} ${placeholderColor}`,
-      helper: "mt-1 text-[color:var(--color-neutrals-gray-6)]",
-      icon: "text-[color:var(--color-neutrals-gray-6)]",
+      wrapper: `${borderColor} focus-within:border-neutrals-gray-4`,
+      input: `${textColor} ${placeholderColor}`,
+      helper: "mt-1 text-neutrals-gray-6",
+      icon: "text-neutrals-gray-6",
     },
     success: {
-      wrapper:
-        "border-[var(--color-sucess)] focus-within:border-[var(--color-sucess)]",
-      input:
-        "text-[color:var(--color-sucess)] placeholder:text-[color:var(--color-sucess)]",
-      helper: "font-inter mt-1 text-[12px] text-[color:var(--color-sucess)]",
-      icon: "text-[color:var(--color-sucess)]",
+      wrapper: "border-sucess focus-within:border-sucess",
+      input: "text-sucess placeholder:text-sucess",
+      helper: "font-inter mt-1 text-[12px] text-sucess",
+      icon: "text-sucess",
     },
     error: {
-      wrapper:
-        "border-[var(--color-error)] focus-within:border-[var(--color-error)]",
-      input: "text-[var(--color-error)] ",
-      helper: "font-inter mt-1 text-[12px] text-[var(--color-error)]",
-      icon: "text-[var(--color-error)]",
+      wrapper: "border-error focus-within:border-error",
+      input: "text-error ",
+      helper: "font-inter mt-1 text-[12px] text-error",
+      icon: "text-error",
     },
     disabled: {
-      wrapper:
-        "border-[var(--color-neutrals-gray-3)] cursor-not-allowed ",
-      input: "text-[var(--color-neutrals-gray-3)] cursor-not-allowed ",
-      helper: "font-inter mt-1 text-[12px] text-[var(--color-neutrals-gray-3)]",
-      icon: "text-[var(--color-neutrals-gray-3)] cursor-not-allowed ",
+      wrapper: "border-neutrals-gray-3 cursor-not-allowed ",
+      input: "text-neutrals-gray-3 cursor-not-allowed ",
+      helper: "font-inter mt-1 text-[12px] text-neutrals-gray-3",
+      icon: "text-neutrals-gray-3 cursor-not-allowed ",
     },
   };
 
@@ -62,30 +56,32 @@ const InputField = ({
   return (
     <>
       <div className={`${fieldContainerClassName}`}>
-      {label && (
-        <p
-          className={`font-inter mb-2 text-[14px] ${state === "disabled" ? "text-[color:var(--color-neutrals-gray-3)]" : "text-[color:var(--color-dark-gray)]"}`}
-        >
-          {label}
-        </p>
-      )}
+        {label && (
+          <p
+            className={`font-inter mb-2 text-[14px] ${
+              state === "disabled" ? "text-neutrals-gray-3" : "text-dark-gray"
+            }`}
+          >
+            {label}
+          </p>
+        )}
 
-      <div className={`${baseClasses.wrapper} ${current.wrapper}`}>
-          <input
-            id={id}
-            name={name}
-          type={type}
-          placeholder={placeholder}
-          disabled={state === "disabled"}
-          className={`${baseClasses.input} ${current.input}`}
-        />
-
-        <div className="flex gap-1 items-center justify-between">
+        <div className={`${baseClasses.wrapper} ${current.wrapper}`}>
           {LeftIcon && (
             <span className={current.icon}>
               <LeftIcon size={24} />
             </span>
           )}
+          <input
+            id={id}
+            name={name}
+            type={type}
+            placeholder={placeholder}
+            disabled={state === "disabled"}
+            className={`${baseClasses.input} ${current.input}`}
+            value={value}
+            onChange={onChange}
+          />
           {RightIcon && (
             <span
               className={
@@ -98,9 +94,8 @@ const InputField = ({
             </span>
           )}
         </div>
-      </div>
 
-      {helperText && <p className={current.helper}>{helperText}</p>}
+        {helperText && <p className={current.helper}>{helperText}</p>}
       </div>
     </>
   );

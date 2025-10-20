@@ -1,12 +1,17 @@
-import React from 'react'
-import Image from 'next/image'
-import review1 from '@/assets/images/reviewImages/review1.png'
+import Image from "next/image";
+import review1 from "@/assets/images/reviewImages/review1.png";
 import productReview1 from "@/assets/images/reviewImages/productreview1.png";
-import RatingStars from '../ui/RatingStars';
-const ReviewCard = ({reviewImage = review1, productReviewImage = productReview1, reviewText = "I highly recommend shopping from kicks", reviewTitle = "Good Quality", rating = 0}) => {
+import RatingStars from "../ui/RatingStars";
+const ReviewCard = ({
+  reviewImage = review1,
+  productReviewImage = productReview1,
+  reviewText = "I highly recommend shopping from kicks",
+  reviewTitle = "Good Quality",
+  rating = 0,
+}) => {
   return (
     <div className="w-fit ">
-      <div className="flex gap-1 bg-[var(--color-white)] p-8 rounded-tl-4xl rounded-tr-4xl">
+      <div className="flex gap-1 bg-white p-8 rounded-tl-4xl rounded-tr-4xl">
         <div className="max-w-[293px]">
           <h6 className="h5">{reviewTitle}</h6>
           <p className="p w-[90%] leading-[100%] mt-2">{reviewText}</p>
@@ -14,7 +19,10 @@ const ReviewCard = ({reviewImage = review1, productReviewImage = productReview1,
             <span>
               <RatingStars rating={rating} />
             </span>
-            <span>{rating}{rating % 1 >= 0.5 ? "" : ".0"}</span>
+            <span>
+              {rating}
+              {rating % 1 >= 0.5 ? "" : ".0"}
+            </span>
           </div>
         </div>
         <div className="self-start">
@@ -32,6 +40,6 @@ const ReviewCard = ({reviewImage = review1, productReviewImage = productReview1,
       </div>
     </div>
   );
-}
+};
 
-export default ReviewCard
+export default ReviewCard;

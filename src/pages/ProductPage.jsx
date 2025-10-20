@@ -13,11 +13,13 @@ export default function ProductPage({ product }) {
           </div>
 
           <div className="flex flex-col justify-start">
-            <Button state="secondary" className="w-fit">New Release</Button>
+            <Button state="secondary" className="w-fit">
+              New Release
+            </Button>
 
             <h2 className="h3 mt-4">ADIDAS 4DFWD X PARLEY RUNNING SHOES</h2>
 
-            <p className="mt-2 text-[var(--color-blue)] h5">$125.00</p>
+            <p className="mt-2 text-blue h5">$125.00</p>
 
             <div className="mt-6">
               <VariantPicker />

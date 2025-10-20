@@ -1,7 +1,7 @@
-import React from "react";
+"use client";
 
 const RadioButton = ({
-  type = "button", 
+  type = "button",
   label = "",
   value = "",
   name = "",
@@ -22,19 +22,15 @@ const RadioButton = ({
   const buttonStyles = `
     px-4 py-2 outline ${
       checked
-        ? "outline-[var(--color-dark-gray)] outline-offset-2 bg-[var(--color-dark-gray)] text-white"
-        : "outline-[var(--color-neutrals-gray-3)] text-[var(--color-dark-gray)] bg-transparent"
+        ? "outline-gray outline-offset-2 bg-gray text-white"
+        : "outline-neutrals-gray-3 text-dark-gray bg-transparent"
     }
-    ${
-      disabled
-        ? "opacity-50 cursor-not-allowed"
-        : "hover:outline-[var(--color-dark-gray)]"
-    }
+    ${disabled ? "opacity-50 cursor-not-allowed" : "hover:outline-gray"}
   `;
 
   const colorStyles = `
     w-8 h-8 rounded-full outline outline-1
-    ${checked ? "outline-[var(--color-dark-gray) outline-offset-2]" : "outline-transparent"}
+    ${checked ? "outline-gray outline-offset-2" : "outline-transparent"}
     ${disabled ? "opacity-40 cursor-not-allowed" : "hover:scale-105"}
   `;
 

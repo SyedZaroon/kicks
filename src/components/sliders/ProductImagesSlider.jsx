@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 import menaddidas1 from "@/assets/images/productImages/menAddidas/menaddidas1.png";

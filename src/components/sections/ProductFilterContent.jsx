@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import CheckBox from "../ui/CheckBox";
 import PriceRange from "../ui/PriceRange";
 import Icon from "../ui/Icon";
@@ -31,10 +31,8 @@ const ProductFilterContent = () => {
     <div className="flex flex-col gap-6">
       {/* Header */}
       <div className="flex justify-between items-center">
-        <h2 className="text-lg font-semibold text-[var(--color-dark-gray)]">
-          Filters
-        </h2>
-        <button className="text-sm text-[var(--color-neutrals-gray-3)] hover:text-[var(--color-dark-gray)]">
+        <h2 className="text-lg font-semibold text-dark-gray">Filters</h2>
+        <button className="text-sm text-neutrals-gray-3 hover:text-dark-gray">
           Clear All
         </button>
       </div>
@@ -59,8 +57,8 @@ const ProductFilterContent = () => {
             openFilters.size ? "max-h-40" : "max-h-0"
           }`}
         >
-          {sizes.map((size) => (
-            <CheckBox key={size} label={size} type="button" />
+          {sizes.map((size, idx) => (
+            <CheckBox key={idx} label={size} type="button" />
           ))}
         </div>
       </div>
@@ -85,8 +83,8 @@ const ProductFilterContent = () => {
             openFilters.color ? "max-h-40" : "max-h-0"
           }`}
         >
-          {colors.map((c) => (
-            <CheckBox key={c} type="color" colorCode={c} />
+          {colors.map((c, idx) => (
+            <CheckBox key={idx} type="color" colorCode={c} />
           ))}
         </div>
       </div>
@@ -111,8 +109,8 @@ const ProductFilterContent = () => {
             openFilters.gender ? "max-h-40" : "max-h-0"
           }`}
         >
-          {genders.map((g) => (
-            <CheckBox key={g} label={g} />
+          {genders.map((g, idx) => (
+            <CheckBox key={idx} label={g} />
           ))}
         </div>
       </div>

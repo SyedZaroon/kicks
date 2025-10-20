@@ -1,5 +1,5 @@
 import Sidebar from "@/components/layout/Sidebar";
-import React from "react";
+;
 
 const PrivacyPolicy = () => {
   return (
@@ -8,10 +8,10 @@ const PrivacyPolicy = () => {
       <div>
         <h1 className="font-rubik text-2xl font-semibold">Privacy Policy</h1>
 
-        <div className="mt-6 font-open-sans text-[var(--color-dark-gray)]  text-[16px]">
+        <div className="mt-6 font-open-sans text-dark-gray text-[16px]">
           <p className="mb-6">
-            Welcome to <span className="font-semibold">Kicks</span>.
-            By accessing or using our website, you agree to be bound by the
+            Welcome to <span className="font-semibold">Kicks</span>. By
+            accessing or using our website, you agree to be bound by the
             following Terms and Conditions. Please read them carefully before
             placing any orders.
           </p>
@@ -63,8 +63,8 @@ const PrivacyPolicy = () => {
           <p className="mb-6">
             All content, including text, images, logos, and graphics, are the
             property of
-            <span className="font-semibold"> Kicks </span>and may
-            not be used without permission.
+            <span className="font-semibold"> Kicks </span>and may not be used
+            without permission.
           </p>
 
           <h2 className="text-xl font-semibold mt-8 mb-3">

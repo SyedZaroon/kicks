@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Button = ({
   type = "fill",
   disabled = false,
@@ -12,22 +10,18 @@ const Button = ({
   iconclass = "",
 }) => {
   const baseClasses = `rounded-lg font-inter weight-medium text-sm flex items-center gap-1 p-2 lg:p-4 hover:outline-1 ${
-    state === "primary"
-      ? "hover:outline-[var(--color-dark-gray)]"
-      : "hover:outline-[var(--color-blue)]"
+    state === "primary" ? "hover:outline-dark-gray" : "hover:outline-blue"
   }  `;
 
   const buttonClasses = {
     fill: {
       wrapper: ` ${
-        state === "primary"
-          ? "bg-[var(--color-dark-gray)]"
-          : "bg-[var(--color-blue)]"
+        state === "primary" ? "bg-dark-gray" : "bg-blue"
       } hover:outline-offset-2`,
-      disabled: "bg-[var(--color-neutrals-gray-2)]",
+      disabled: "bg-neutrals-gray-2",
     },
     outline: {
-      wrapper: ` border-[var(--color-dark-gray)] border`,
+      wrapper: ` border-dark-gray border`,
       disabled: "border",
     },
     text: "",
@@ -36,9 +30,9 @@ const Button = ({
     <button
       className={` ${
         disabled
-          ? `${buttonClasses[type].disabled} cursor-not-allowed text-[var(--color-neutrals-gray-5)]`
+          ? `${buttonClasses[type].disabled} cursor-not-allowed text-neutrals-gray-5`
           : ` ${buttonClasses[type].wrapper}`
-      } ${baseClasses} text-[var(--color-white)] ${className}`}
+      } ${baseClasses} text-white ${className}`}
       onClick={onClick}
     >
       {LeftIcon && <LeftIcon className={iconclass} size={16} />}
@@ -48,4 +42,4 @@ const Button = ({
   );
 };
 
-export default Button
+export default Button;

@@ -1,5 +1,3 @@
-import React from "react";
-
 const SelectField = ({
   label = "",
   name = "",
@@ -11,9 +9,9 @@ const SelectField = ({
   state = "default", // "default" | "success" | "error" | "disabled"
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
-  borderColor = "border-[var(--color-dark-gray)]",
-  textColor = "text-[color:var(--color-neutrals-gray-10)]",
-  placeholderColor = "placeholder:text-[color:var(--color-neutrals-gray-6)]",
+  borderColor = "border-dark-gray",
+  textColor = "text-neutrals-gray-10",
+  placeholderColor = "placeholder:text-neutrals-gray-6",
   wrapperClassName = "",
   fieldContainerClassName = "",
 }) => {
@@ -25,31 +23,28 @@ const SelectField = ({
 
   const stateClasses = {
     default: {
-      wrapper: `${borderColor} focus-within:border-[var(--color-neutrals-gray-4)]`,
+      wrapper: `${borderColor} focus-within:border-neutrals-gray-4`,
       select: `${textColor}`,
-      helper: "text-[color:var(--color-neutrals-gray-6)]",
-      icon: "text-[color:var(--color-neutrals-gray-6)]",
+      helper: "text-neutrals-gray-6",
+      icon: "text-neutrals-gray-6",
     },
     success: {
-      wrapper:
-        "border-[var(--color-sucess)] focus-within:border-[var(--color-sucess)]",
-      select: "text-[color:var(--color-sucess)]",
-      helper: "text-[color:var(--color-sucess)]",
-      icon: "text-[color:var(--color-sucess)]",
+      wrapper: "border-sucess focus-within:border-sucess",
+      select: "text-sucess",
+      helper: "text-sucess",
+      icon: "text-sucess",
     },
     error: {
-      wrapper:
-        "border-[var(--color-error)] focus-within:border-[var(--color-error)]",
-      select: "text-[color:var(--color-error)]",
-      helper: "text-[color:var(--color-error)]",
-      icon: "text-[color:var(--color-error)]",
+      wrapper: "border-error focus-within:border-error",
+      select: "text-error",
+      helper: "text-error",
+      icon: "text-error",
     },
     disabled: {
-      wrapper: "border-[var(--color-neutrals-gray-3)] cursor-not-allowed",
-      select:
-        "text-[var(--color-neutrals-gray-3)] cursor-not-allowed bg-transparent",
-      helper: "text-[var(--color-neutrals-gray-3)]",
-      icon: "text-[var(--color-neutrals-gray-3)] cursor-not-allowed",
+      wrapper: "border-neutrals-gray-3 cursor-not-allowed",
+      select: "text-neutrals-gray-3 cursor-not-allowed bg-transparent",
+      helper: "text-neutrals-gray-3",
+      icon: "text-neutrals-gray-3 cursor-not-allowed",
     },
   };
 
@@ -60,9 +55,7 @@ const SelectField = ({
       {label && (
         <p
           className={`font-inter mb-2 text-[14px] ${
-            state === "disabled"
-              ? "text-[color:var(--color-neutrals-gray-3)]"
-              : "text-[color:var(--color-dark-gray)]"
+            state === "disabled" ? "text-neutrals-gray-3" : "text-dark-gray"
           }`}
         >
           {label}
@@ -81,8 +74,8 @@ const SelectField = ({
           className={`${baseClasses.select} ${current.select}`}
         >
           <option value="">Select an option</option>
-          {options.map((opt) => (
-            <option key={opt.value || opt.label} value={opt.value}>
+          {options.map((opt, idx) => (
+            <option key={idx} value={opt.value}>
               {opt.label}
             </option>
           ))}

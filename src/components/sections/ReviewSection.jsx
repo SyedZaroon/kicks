@@ -1,6 +1,5 @@
-import React from 'react'
-import Button from '../ui/Button'
-import ReviewSlider from '../sliders/ReviewSlider'
+import Button from "../ui/Button";
+import ReviewSlider from "../sliders/ReviewSlider";
 const ReviewSection = () => {
   return (
     <div>
@@ -9,12 +8,12 @@ const ReviewSection = () => {
         <div className="sm:self-end">
           <Button state="secondary">View All Reviews</Button>
         </div>
-          </div>
-          <div className="mt-8">
-            <ReviewSlider />
-          </div>
+      </div>
+      <div className="mt-8">
+        <ReviewSlider />
+      </div>
     </div>
   );
-}
+};
 
-export default ReviewSection
+export default ReviewSection;
