@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Autoplay } from "swiper/modules";
-import ReviewCard from "../blocks/ReviewCard";
+import ReviewCard from "@/components/ui/ReviewCard";
 import review1 from "../../assets/images/reviewImages/review1.png";
 import review2 from "../../assets/images/reviewImages/review2.png";
 import review3 from "../../assets/images/reviewImages/review3.png";

@@ -8,6 +8,8 @@ const Button = ({
   rightIcon: RightIcon,
   state = "primary",
   children,
+  onClick,
+  iconclass = "",
 }) => {
   const baseClasses = `rounded-lg font-inter weight-medium text-sm flex items-center gap-1 p-2 lg:p-4 hover:outline-1 ${
     state === "primary"
@@ -25,11 +27,7 @@ const Button = ({
       disabled: "bg-[var(--color-neutrals-gray-2)]",
     },
     outline: {
-      wrapper: ` ${
-        state === "primary"
-          ? "bg-[var(--color-dark-gray)]"
-          : "bg-[var(--color-blue)]"
-      } border-[var(--color-dark-gray)] border`,
+      wrapper: ` border-[var(--color-dark-gray)] border`,
       disabled: "border",
     },
     text: "",
@@ -38,13 +36,14 @@ const Button = ({
     <button
       className={` ${
         disabled
-          ? `${buttonClasses[type].disabled} cursor-not-allowed text-[var(--color-neutrals-gray-5)] pointer-events-none`
+          ? `${buttonClasses[type].disabled} cursor-not-allowed text-[var(--color-neutrals-gray-5)]`
           : ` ${buttonClasses[type].wrapper}`
       } ${baseClasses} text-[var(--color-white)] ${className}`}
+      onClick={onClick}
     >
-      {LeftIcon && <LeftIcon size={16} />}
+      {LeftIcon && <LeftIcon className={iconclass} size={16} />}
       {children}
-      {RightIcon && <RightIcon size={16} />}
+      {RightIcon && <RightIcon className={iconclass} size={16} />}
     </button>
   );
 };

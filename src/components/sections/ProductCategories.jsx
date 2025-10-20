@@ -1,7 +1,7 @@
 import React from 'react'
-import CategoryCard from '../blocks/CategoryCard'
-import category1 from '../../assets/images//productCategory/category1.png'
-import category2 from '../../assets/images//productCategory/category2.png'
+import CategoryCard from "@/components/ui/CategoryCard";
+import category1 from "../../assets/images//productCategory/category1.png";
+import category2 from "../../assets/images//productCategory/category2.png";
 const ProductCategories = () => {
   return (
     <div className="bg-[var(--color-dark-gray)] p-4 lg:pl-[60px] lg:pr-[0px] lg:pb-[0px]">

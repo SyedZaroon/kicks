@@ -92,7 +92,7 @@
 }
 
 @utility h5 {
-  font-size: clamp(20px, 11.8vw, 26px);
+  font-size: clamp(14px, 11vw, 20px);
   font-family: var(--font-rubik);
   font-weight: 600;
   line-height: 100%;
@@ -114,6 +114,6 @@
 
 body {
   background-color: var(--color-bg);
-  padding-block: clamp(24px, 2vw, 32px);
+  padding-top: clamp(24px, 2vw, 32px);
 }
 

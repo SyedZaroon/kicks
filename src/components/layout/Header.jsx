@@ -31,12 +31,7 @@ const Header = () => {
 
       <ul className="flex lg:gap-[40px] items-center md:gap-[15px] gap-1 font-rubik text-sm font-semibold">
         <li className="lg:block hidden ">
-          <Icon
-            icon={SearchFill}
-            type="text"
-            size={28}
-            className="w-[60px] h-[60px]"
-          />
+          <Icon icon={SearchFill} type="text" size={28} />
         </li>
         <li>
           <Icon icon={UserFill} type="text" size={28} />

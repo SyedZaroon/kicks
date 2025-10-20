@@ -64,22 +64,22 @@ const Footer = () => {
             <h6 className="text-[var(--color-yellow)] h5">Categories</h6>
             <ul className="font-open-sans text-[var(--color-light-gray)] p flex flex-col gap-2 mt-4">
               <li>
-                <Link href="/">Runners</Link>
+                <Link href="/collection/runners">Runners</Link>
               </li>
               <li>
-                <Link href="/">Sneakers</Link>
+                <Link href="/collection/sneakers">Sneakers</Link>
               </li>
               <li>
-                <Link href="/">Basketball</Link>
+                <Link href="/collection/basketball">Basketball</Link>
               </li>
               <li>
-                <Link href="/">Outdoor</Link>
+                <Link href="/collection/outdoor">Outdoor</Link>
               </li>
               <li>
-                <Link href="/">Golf</Link>
+                <Link href="/collection/golf">Golf</Link>
               </li>
               <li>
-                <Link href="/">Hiking</Link>
+                <Link href="/collection/hiking">Hiking</Link>
               </li>
             </ul>
           </div>

@@ -1,4 +1,4 @@
-export default function Heart({size = 16,className = ""}) {
+export default function HeartOutline({size = 16,className = ""}) {
   return (
     <svg
     width={size}
