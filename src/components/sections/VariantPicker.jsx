@@ -88,8 +88,8 @@ const VariantPicker = () => {
       </div>
 
       {/* ACTION BUTTONS */}
-      <div className="flex gap-4 items-center flex-wrap">
-        <div className="w-[80%]">
+      <div className="grid grid-cols-[85%_10%] gap-1">
+        <div className="">
           <Button
             className="w-full justify-center"
             disabled={!selectedColor || !selectedSize}

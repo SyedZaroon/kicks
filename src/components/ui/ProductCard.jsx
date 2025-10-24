@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import React from 'react'
 import product1 from '../../assets/images/productImages/product1.png'
 import Badge from '../ui/Badge';
 import Button from '../ui/Button';

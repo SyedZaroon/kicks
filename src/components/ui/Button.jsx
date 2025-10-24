@@ -9,7 +9,7 @@ const Button = ({
   onClick,
   iconclass = "",
 }) => {
-  const baseClasses = `rounded-lg font-inter weight-medium text-sm flex items-center gap-1 p-2 lg:p-4 hover:outline-1 ${
+  const baseClasses = `rounded-lg font-inter weight-medium text-sm flex items-center gap-1 p-4 hover:outline-1 ${
     state === "primary" ? "hover:outline-dark-gray" : "hover:outline-blue"
   }  `;
 

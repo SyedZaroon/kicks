@@ -10,11 +10,11 @@ const Icon = ({
     "rounded-lg w-fit hover:outline-1 hover:outline-dark-gray";
   const iconClasses = {
     fill: {
-      wrapper: "bg-dark-gray p-2 text-white hover:outline-offset-2",
+      wrapper: "bg-dark-gray p-3 text-white hover:outline-offset-2",
       disabled: "bg-neutrals-gray-2 ",
     },
     outline: {
-      wrapper: "border border-dark-gray p-2 hover:outline-offset-2",
+      wrapper: "border border-dark-gray p-3 hover:outline-offset-2",
       disabled: "bg-transparent border border-neutrals-gray-2 ",
     },
     text: {
