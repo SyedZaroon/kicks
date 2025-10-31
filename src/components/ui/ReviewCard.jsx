@@ -11,7 +11,7 @@ const ReviewCard = ({
 }) => {
   return (
     <div className="w-fit ">
-      <div className="flex gap-1 bg-white p-8 rounded-tl-4xl rounded-tr-4xl">
+      <div className="flex gap-1 bg-white p-8 rounded-tl-4xl rounded-tr-4xl justify-between">
         <div className="max-w-[293px]">
           <h6 className="h5">{reviewTitle}</h6>
           <p className="p w-[90%] leading-[100%] mt-2">{reviewText}</p>
@@ -29,7 +29,7 @@ const ReviewCard = ({
           <Image src={reviewImage} alt="reviewImage" width={64} height={64} />
         </div>
       </div>
-      <div>
+      <div className="bg-[#eceef0] rounded-br-4xl rounded-bl-4xl">
         <Image
           src={productReviewImage}
           alt="productReviewImage"

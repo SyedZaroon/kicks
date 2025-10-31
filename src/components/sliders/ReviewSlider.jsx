@@ -10,13 +10,27 @@ import "swiper/css/pagination";
 // import required modules
 import { Autoplay } from "swiper/modules";
 import ReviewCard from "@/components/ui/ReviewCard";
-import review1 from "../../assets/images/reviewImages/review1.png";
-import review2 from "../../assets/images/reviewImages/review2.png";
-import review3 from "../../assets/images/reviewImages/review3.png";
-import productReview1 from "../../assets/images/reviewImages/productreview1.png";
-import productReview2 from "../../assets/images/reviewImages/productreview2.png";
-import productReview3 from "../../assets/images/reviewImages/productreview3.png";
+import { useProducts } from "@/hooks/useProducts";
 export default function App() {
+  const { products, isProductsLoading, productsError } = useProducts();
+
+  if (isProductsLoading) return <div>Loading...</div>;
+  if (!!productsError) return <div>Error loading products</div>;
+
+  const topReviews = products.flatMap((product) =>
+    product.reviews
+      .filter((rev) => rev.rating === 5)
+      .map((rev) => ({
+        title: rev.user,
+        comment: rev.comment,
+        rating: rev.rating,
+        productImage: product.images[0],
+        userImg: rev.userImg,
+      }))
+  );
+
+  console.log(topReviews);
+
   return (
     <>
       <Swiper
@@ -34,18 +48,17 @@ export default function App() {
           1024: { slidesPerView: 3, spaceBetween: 30 },
         }}
       >
-        <SwiperSlide>
-          <ReviewCard reviewImage={review1} productReviewImage={productReview1} rating={3}/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ReviewCard reviewImage={review2} productReviewImage={productReview2} rating={5}/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ReviewCard reviewImage={review3} productReviewImage={productReview3} rating={4}/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ReviewCard reviewImage={review2} productReviewImage={productReview2} rating={4.5}/>
-        </SwiperSlide>
+        {topReviews.map((review, index) => (
+          <SwiperSlide key={index}>
+            <ReviewCard
+              reviewImage={review.userImg}
+              productReviewImage={review.productImage}
+              reviewTitle={review.title}
+              reviewText={review.comment}
+              rating={review.rating}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );

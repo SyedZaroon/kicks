@@ -9,6 +9,7 @@ const ProductCard = ({
   productPrice = "125",
   productName = "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
 }) => {
+
   return (
     <>
       <div className="w-fit">
@@ -18,6 +19,8 @@ const ProductCard = ({
               src={productImage}
               alt="Product"
               className="w-full h-full object-cover"
+              width={300}
+              height={300}
             />
             <span className="absolute top-0 z-10">
               <Badge text={badgeText} />

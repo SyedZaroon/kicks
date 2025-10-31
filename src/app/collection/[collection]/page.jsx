@@ -4,8 +4,8 @@ import SortingFilter from "@/components/forms/SortingFilter";
 import ProductFilter from '@/components/sections/ProductFilterContent'
 import { productData } from '@/data/productData'
 
-const Collection = ({params}) => {
-  const { collection } = params;
+const Collection = async ({ params }) => {
+  const { collection } = await params;
 
   return (
     <div className="section-margin pb-8">
@@ -29,6 +29,6 @@ const Collection = ({params}) => {
       </div>
     </div>
   );
-}
+};
 
 export default Collection
