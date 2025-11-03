@@ -8,9 +8,8 @@ const FeatureProducts = ({
   button = true,
   titleClass = "section-heading uppercase md:max-w-[60%]",
 }) => {
-  const { products, isProductsLoading, productsError } = useProducts(
-    "?tags_like=New&_limit=4"
-  );
+  const { products, isProductsLoading, productsError } =
+    useProducts("?limit=4");
 
   if (isProductsLoading) return <div>Loading...</div>;
   if (!!productsError) return <div>Error loading products</div>;
@@ -24,7 +23,7 @@ const FeatureProducts = ({
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mt-8">
-        {products?.map((items) => {
+        {products?.slice(0, 4).map((items) => {
           return (
             <ProductCard
               key={items.id}
@@ -32,6 +31,7 @@ const FeatureProducts = ({
               productImage={items.images[0]}
               productPrice={items.sale_price || items.regular_price}
               badgeText={items.tags[0]}
+              slug={items.slug}
             />
           );
         })}

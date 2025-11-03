@@ -2,14 +2,15 @@ import Image from 'next/image'
 import product1 from '../../assets/images/productImages/product1.png'
 import Badge from '../ui/Badge';
 import Button from '../ui/Button';
+import Link from "next/link";
 
 const ProductCard = ({
   productImage = product1,
   badgeText = "New",
   productPrice = "125",
   productName = "ADIDAS 4DFWD X PARLEY RUNNING SHOES",
+  slug,
 }) => {
-
   return (
     <>
       <div className="w-fit">
@@ -28,9 +29,11 @@ const ProductCard = ({
           </div>
         </div>
         <h5 className="h5 mt-4">{productName}</h5>
-        <Button className="mt-4 w-full justify-center h4">
-          View Product - <span className="text-yellow">${productPrice}</span>
-        </Button>
+        <Link className="cursor-pointer" href={`/product/${slug}`}>
+          <Button className="mt-4 w-full justify-center h4">
+            View Product - <span className="text-yellow">${productPrice}</span>
+          </Button>
+        </Link>
       </div>
     </>
   );

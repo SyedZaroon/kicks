@@ -29,7 +29,6 @@ export default function App() {
       }))
   );
 
-  console.log(topReviews);
 
   return (
     <>
