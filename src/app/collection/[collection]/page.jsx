@@ -7,6 +7,11 @@ import { productData } from '@/data/productData'
 const Collection = async ({ params }) => {
   const { collection } = await params;
 
+  const res = await fetch(
+    `http://localhost:8000/products?category=${collection}`
+  );
+  const products = await res.json();
+
   return (
     <div className="section-margin pb-8">
       <div className=" lg:pt-20 lg:pb-8 py-8">
@@ -15,7 +20,7 @@ const Collection = async ({ params }) => {
       <div className="lg:py-8 py-4  flex flex-wrap justify-between">
         <div>
           <h5 className="h5 uppercase">{collection}</h5>
-          <p className="p">{productData.length} items</p>
+          <p className="p">{products.length} items</p>
         </div>
         <SortingFilter />
       </div>
@@ -24,7 +29,7 @@ const Collection = async ({ params }) => {
           <ProductFilter />
         </div>
         <div>
-          <CollectionGrid />
+          <CollectionGrid products={products} />
         </div>
       </div>
     </div>

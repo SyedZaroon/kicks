@@ -45,14 +45,15 @@ export default function ProductPage({ product }) {
           </div>
         </div>
       </section>
-
-      <section className="section-margin py-8">
-        <FeatureProducts
-          title="You may also like"
-          button={false}
-          titleClass="h2"
-        />
-      </section>
+      {!!product.id && (
+        <section className="section-margin py-8">
+          <FeatureProducts
+            title="You may also like"
+            button={false}
+            titleClass="h2"
+          />
+        </section>
+      )}
     </>
   );
 }

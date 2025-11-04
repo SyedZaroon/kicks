@@ -18,7 +18,7 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 42,
-      "category": "Men's Sneakers",
+      "category": "men",
       "tags": ["New", "Sale", "Casual", "Leather"],
       "slug": "nike-air-force-1-07",
       "reviews": [
@@ -54,7 +54,7 @@
         "condition": ["New"]
       },
       "stock": 20,
-      "category": "Men's Sneakers",
+      "category": "women",
       "tags": ["New", "Sale"],
       "slug": "nike-air-max-270",
       "reviews": [
@@ -90,7 +90,7 @@
         "condition": ["New"]
       },
       "stock": 12,
-      "category": "Men's Sneakers",
+      "category": "runners",
       "tags": ["New", "Sale", "Casual"],
       "slug": "nike-dunk-low-retro",
       "reviews": [
@@ -120,7 +120,7 @@
         "condition": ["New"]
       },
       "stock": 2,
-      "category": "Women's Sneakers",
+      "category": "sneakers",
       "tags": ["Sale", "Casual"],
       "slug": "nike-air-jordan-1-mid",
       "reviews": [
@@ -156,7 +156,7 @@
         "condition": ["New"]
       },
       "stock": 15,
-      "category": "Women's Sneakers",
+      "category": "basketball",
       "tags": ["New", "Running"],
       "slug": "nike-air-zoom-pegasus-40",
       "reviews": [
@@ -187,7 +187,7 @@
         "condition": ["New"]
       },
       "stock": 0,
-      "category": "Men's Sneakers",
+      "category": "outdoor",
       "tags": ["New", "Casual", "Leather"],
       "slug": "nike-air-vapormax-plus",
       "reviews": [
@@ -217,7 +217,7 @@
         "condition": ["New"]
       },
       "stock": 0,
-      "category": "Women's Sneakers",
+      "category": "men",
       "tags": ["New", "Sale", "Casual", "Leather"],
       "slug": "nike-blazer-mid-77-vintage",
       "reviews": [
@@ -247,7 +247,7 @@
         "condition": ["New"]
       },
       "stock": 0,
-      "category": "Women's Sneakers",
+      "category": "women",
       "tags": ["New", "Sale", "Leather"],
       "slug": "nike-air-max-90",
       "reviews": [
@@ -276,7 +276,7 @@
         "condition": ["New"]
       },
       "stock": 2,
-      "category": "Women's Sneakers",
+      "category": "women",
       "tags": ["New", "Sale", "Casual", "Leather"],
       "slug": "nike-air-max-97",
       "reviews": [
@@ -301,7 +301,7 @@
         "condition": ["New"]
       },
       "stock": 4,
-      "category": "Men's Sneakers",
+      "category": "runners",
       "tags": ["New", "Sale", "Running"],
       "slug": "nike-react-infinity-run-flyknit-3",
       "reviews": [
@@ -325,7 +325,7 @@
         "condition": ["New"]
       },
       "stock": 6,
-      "category": "Men's Sneakers",
+      "category": "sneakers",
       "tags": ["New", "Running"],
       "slug": "nike-air-zoom-structure-25",
       "reviews": [
@@ -354,7 +354,7 @@
         "condition": ["Used"]
       },
       "stock": 1,
-      "category": "Men's Sneakers",
+      "category": "basketball",
       "tags": ["New", "Leather"],
       "slug": "nike-air-max-97",
       "reviews": [
@@ -383,7 +383,7 @@
         "condition": ["New"]
       },
       "stock": 3,
-      "category": "Men's Sneakers",
+      "category": "outdoor",
       "tags": ["New", "Running"],
       "slug": "nike-react-infinity-run-flyknit-3",
       "reviews": [
@@ -412,7 +412,7 @@
         "condition": ["Refurbished"]
       },
       "stock": 5,
-      "category": "Men's Sneakers",
+      "category": "men",
       "tags": ["Refurbished", "Casual"],
       "slug": "nike-air-presto",
       "reviews": [
@@ -441,7 +441,7 @@
         "condition": ["Used"]
       },
       "stock": 2,
-      "category": "Men's Sneakers",
+      "category": "women",
       "tags": ["Used", "Running"],
       "slug": "nike-air-max-95",
       "reviews": [
@@ -470,7 +470,7 @@
         "condition": ["New"]
       },
       "stock": 7,
-      "category": "Men's Sneakers",
+      "category": "runners",
       "tags": ["New", "Running"],
       "slug": "nike-air-zoom-vomero-17",
       "reviews": [
@@ -499,8 +499,8 @@
         "condition": ["New"]
       },
       "stock": 10,
-      "category": "Women's Sneakers",
-      "tags": ["New", "Basketball"],
+      "category": "sneakers",
+      "tags": ["New", "basketball"],
       "slug": "nike-zoom-freak-5",
       "reviews": [
         { "user": "Salman", "rating": 5, "comment": "Great grip on the court." }
@@ -524,7 +524,7 @@
         "condition": ["Refurbished"]
       },
       "stock": 3,
-      "category": "Men's Sneakers",
+      "category": "basketball",
       "tags": ["Refurbished", "Casual", "Leather"],
       "slug": "nike-air-max-plus",
       "reviews": [
@@ -553,7 +553,7 @@
         "condition": ["Used"]
       },
       "stock": 4,
-      "category": "Men's Sneakers",
+      "category": "outdoor",
       "tags": ["Used", "Trail"],
       "slug": "nike-air-zoom-terra-kiger-9",
       "reviews": [
@@ -582,7 +582,7 @@
         "condition": ["New"]
       },
       "stock": 8,
-      "category": "Women's Sneakers",
+      "category": "men",
       "tags": ["New", "Running"],
       "slug": "nike-free-rn-5.0",
       "reviews": [
@@ -611,7 +611,7 @@
         "condition": ["Used", "Refurbished"]
       },
       "stock": 9,
-      "category": "Women's Sneakers",
+      "category": "women",
       "tags": ["New", "Casual"],
       "slug": "nike-air-force-1-shadow",
       "reviews": [
@@ -640,7 +640,7 @@
         "condition": ["New", "Used"]
       },
       "stock": 11,
-      "category": "Men's Sneakers",
+      "category": "men",
       "tags": ["New", "Casual"],
       "slug": "nike-dunk-high-panda",
       "reviews": [
@@ -669,7 +669,7 @@
         "condition": ["New", "Refurbished"]
       },
       "stock": 5,
-      "category": "Men's Sneakers",
+      "category": "runners",
       "tags": ["New", "Running"],
       "slug": "nike-zoomx-invincible-3",
       "reviews": [
@@ -698,7 +698,7 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 7,
-      "category": "Women's Sneakers",
+      "category": "sneakers",
       "tags": ["New", "Casual"],
       "slug": "nike-air-max-200",
       "reviews": [
@@ -718,7 +718,7 @@
         "condition": ["New", "Used"]
       },
       "stock": 14,
-      "category": "Men's Sneakers",
+      "category": "basketball",
       "tags": ["New", "Casual", "Training"],
       "slug": "nike-air-trainer-1",
       "reviews": [
@@ -747,7 +747,7 @@
         "condition": ["Used", "Refurbished"]
       },
       "stock": 18,
-      "category": "Men's Sneakers",
+      "category": "outdoor",
       "tags": ["Used", "Refurbished", "Casual"],
       "slug": "nike-air-monarch-iv",
       "reviews": [
@@ -776,8 +776,8 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 9,
-      "category": "Men's Sneakers",
-      "tags": ["New", "Basketball"],
+      "category": "men",
+      "tags": ["New", "basketball"],
       "slug": "nike-air-zoom-gt-cut-2",
       "reviews": [
         {
@@ -805,7 +805,7 @@
         "condition": ["New", "Used"]
       },
       "stock": 13,
-      "category": "Men's Sneakers",
+      "category": "men",
       "tags": ["New", "Running"],
       "slug": "nike-react-miler-2",
       "reviews": [
@@ -834,7 +834,7 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 16,
-      "category": "Women's Sneakers",
+      "category": "women",
       "tags": ["New", "Casual"],
       "slug": "nike-air-max-pulse",
       "reviews": [
@@ -863,7 +863,7 @@
         "condition": ["Used", "Refurbished"]
       },
       "stock": 20,
-      "category": "Men's Sneakers",
+      "category": "runners",
       "tags": ["Used", "Refurbished", "Casual"],
       "slug": "nike-air-max-sytm",
       "reviews": [
@@ -892,7 +892,7 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 25,
-      "category": "Men's Sneakers",
+      "category": "sneakers",
       "tags": ["New", "Casual"],
       "slug": "nike-court-vision-low",
       "reviews": [
@@ -921,7 +921,7 @@
         "condition": ["New", "Used"]
       },
       "stock": 8,
-      "category": "Men's Sneakers",
+      "category": "basketball",
       "tags": ["New", "Casual"],
       "slug": "nike-air-more-uptempo",
       "reviews": [
@@ -946,7 +946,7 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 12,
-      "category": "Men's Sneakers",
+      "category": "outdoor",
       "tags": ["New", "Casual"],
       "slug": "nike-air-tailwind-79",
       "reviews": [
@@ -975,7 +975,7 @@
         "condition": ["Used", "Refurbished"]
       },
       "stock": 10,
-      "category": "Women's Sneakers",
+      "category": "men",
       "tags": ["Used", "Refurbished", "Casual"],
       "slug": "nike-air-max-fusion",
       "reviews": [
@@ -1004,7 +1004,7 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 14,
-      "category": "Men's Sneakers",
+      "category": "women",
       "tags": ["New", "Trail", "Casual"],
       "slug": "nike-free-run-trail",
       "reviews": [
@@ -1033,7 +1033,7 @@
         "condition": ["New", "Used"]
       },
       "stock": 11,
-      "category": "Women's Sneakers",
+      "category": "women",
       "tags": ["New", "Training"],
       "slug": "nike-air-zoom-superrep-3",
       "reviews": [
@@ -1062,7 +1062,7 @@
         "condition": ["New", "Refurbished"]
       },
       "stock": 15,
-      "category": "Men's Sneakers",
+      "category": "runners",
       "tags": ["New", "Casual"],
       "slug": "nike-air-max-bolt",
       "reviews": [
@@ -1091,8 +1091,8 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 7,
-      "category": "Men's Sneakers",
-      "tags": ["New", "Basketball"],
+      "category": "basketball",
+      "tags": ["New", "basketball"],
       "slug": "nike-zoom-freak-4",
       "reviews": [
         {
@@ -1120,7 +1120,7 @@
         "condition": ["New", "Used"]
       },
       "stock": 6,
-      "category": "Men's Sneakers",
+      "category": "outdoor",
       "tags": ["New", "Casual"],
       "slug": "nike-air-max-2090",
       "reviews": [
@@ -1149,7 +1149,7 @@
         "condition": ["Used", "Refurbished"]
       },
       "stock": 5,
-      "category": "Women's Sneakers",
+      "category": "men",
       "tags": ["Used", "Refurbished", "Casual"],
       "slug": "nike-air-max-genome",
       "reviews": [
@@ -1178,7 +1178,7 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 10,
-      "category": "Women's Sneakers",
+      "category": "women",
       "tags": ["New", "Casual"],
       "slug": "nike-air-max-dawn",
       "reviews": [
@@ -1207,7 +1207,7 @@
         "condition": ["New", "Used"]
       },
       "stock": 12,
-      "category": "Men's Sneakers",
+      "category": "runners",
       "tags": ["New", "Casual"],
       "slug": "nike-air-max-ap",
       "reviews": [
@@ -1232,7 +1232,7 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 4,
-      "category": "Men's Sneakers",
+      "category": "men",
       "tags": ["New", "Running"],
       "slug": "nike-air-zoom-tempo-next%",
       "reviews": [
@@ -1261,7 +1261,7 @@
         "condition": ["Used", "Refurbished"]
       },
       "stock": 15,
-      "category": "Women's Sneakers",
+      "category": "sneakers",
       "tags": ["Used", "Refurbished", "Training"],
       "slug": "nike-air-max-bella-tr-5",
       "reviews": [
@@ -1286,7 +1286,7 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 9,
-      "category": "Men's Sneakers",
+      "category": "basketball",
       "tags": ["New", "Casual"],
       "slug": "nike-air-max-infinity-2",
       "reviews": [
@@ -1315,7 +1315,7 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 6,
-      "category": "Women's Sneakers",
+      "category": "women",
       "tags": ["New", "Sustainable", "Casual"],
       "slug": "nike-air-max-pre-day",
       "reviews": [
@@ -1344,7 +1344,7 @@
         "condition": ["New", "Used"]
       },
       "stock": 8,
-      "category": "Men's Sneakers",
+      "category": "outdoor",
       "tags": ["New", "Running"],
       "slug": "nike-air-zoom-pegasus-40",
       "reviews": [
@@ -1368,7 +1368,7 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 20,
-      "category": "Men's Sneakers",
+      "category": "men",
       "tags": ["New", "Casual", "Vintage"],
       "slug": "nike-blazer-low-77-vintage",
       "reviews": [
@@ -1397,7 +1397,7 @@
         "condition": ["New", "Used", "Refurbished"]
       },
       "stock": 12,
-      "category": "Men's Sneakers",
+      "category": "women",
       "tags": ["New", "Casual"],
       "slug": "nike-air-huarache",
       "reviews": [
@@ -1426,7 +1426,7 @@
         "condition": ["Used", "Refurbished"]
       },
       "stock": 14,
-      "category": "Men's Sneakers",
+      "category": "basketball",
       "tags": ["Used", "Refurbished", "Casual"],
       "slug": "nike-air-max-sc",
       "reviews": [

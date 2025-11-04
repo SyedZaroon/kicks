@@ -1,88 +1,20 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
 import ProductCard from "../ui/ProductCard";
-import { productData } from "../../data/productData";
-import Button from "../ui/Button";
-import ChevronForwordOutline from "@/assets/icons/outline/ChevronForwordOutline";
-
-const CollectionGrid = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const productsPerPage = 9;
-  const totalProducts = productData.length;
-  const totalPages = Math.ceil(totalProducts / productsPerPage);
-
-  const initialPage = parseInt(searchParams.get("page")) || 1;
-  const [currentPage, setCurrentPage] = useState(initialPage);
-
-  useEffect(() => {
-    router.push(`?page=${currentPage}`, { scroll: false });
-  }, [currentPage, router]);
-
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-
-  const currentProducts = productData.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
-
+const CollectionGrid = ({ products }) => {
+  if (products.length === 0)
+    return <div className="h1 text-center uppercase">No products found</div>;
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {currentProducts.map((item, index) => (
+        {products.map((product) => (
           <ProductCard
-            key={index}
-            productName={item.productName}
-            productImage={item.productImage}
-            productPrice={item.productPrice}
-            badgeText={item.productBadge}
+            key={product.id}
+            productName={product.title}
+            productImage={product.images[0]}
+            productPrice={product.sale_price}
+            badgeText={product.productBadge}
+            slug={product.slug}
           />
         ))}
-      </div>
-
-      <div className="flex flex-wrap justify-center items-center gap-2 mt-6">
-        <Button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-          type="outline"
-          state="primary"
-          className="!text-dark-gray"
-          leftIcon={ChevronForwordOutline}
-        >
-          Prev
-        </Button>
-
-        {[...Array(totalPages)].map((_, index) => {
-          const page = index + 1;
-          return (
-            <Button
-              key={page}
-              onClick={() => setCurrentPage(page)}
-              type="outline"
-              className="!text-dark-gray"
-            >
-              {page}
-            </Button>
-          );
-        })}
-
-        <Button
-          onClick={() =>
-            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-          }
-          disabled={currentPage === totalPages}
-          type="outline"
-          state="primary"
-          rightIcon={ChevronForwordOutline}
-          iconclass="rotate-180"
-          className="!text-dark-gray"
-        >
-          Next
-        </Button>
       </div>
     </>
   );

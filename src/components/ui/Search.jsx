@@ -4,6 +4,7 @@ import InputField from "./InputField";
 import search from "@/assets/icons/fill/SearchFill";
 import { useProducts } from "@/hooks/useProducts";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Search = ({ isOpen, onClose }) => {
@@ -75,10 +76,10 @@ const Search = ({ isOpen, onClose }) => {
 
         {/* Scrollable product list */}
         <div className="lg:p-8 p-4 overflow-y-auto flex-1">
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-2">
+          <div className="grid grid-cols-[repeat(4,229px)] gap-2">
             {productsToShow.map((product) => (
-              <div
-                key={product.id}
+              <Link
+                href={`/product/${product.slug}`}
                 className="bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition"
               >
                 <Image
@@ -94,7 +95,7 @@ const Search = ({ isOpen, onClose }) => {
                     ${product.sale_price || product.regular_price}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
