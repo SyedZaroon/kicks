@@ -1,4 +1,5 @@
 import { apiClient } from "@/lib/apiClient";
+import { generateQuery } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 
 export function useProducts(params = {}) {
@@ -11,13 +12,4 @@ export function useProducts(params = {}) {
   });
 
   return { products: data, isProductsLoading: isLoading, productsError: error };
-}
-
-function generateQuery(params = {}) {
-  return Object.entries(params)
-    .map(
-      ([key, value]) =>
-        `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
-    )
-    .join("&");
 }

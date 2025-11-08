@@ -6,7 +6,7 @@ const SelectField = ({
   value = "",
   onChange = () => {},
   helperText = "",
-  state = "default", // "default" | "success" | "error" | "disabled"
+  state = "default",
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
   borderColor = "border-dark-gray",

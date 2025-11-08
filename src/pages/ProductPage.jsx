@@ -21,6 +21,9 @@ export default function ProductPage({ product }) {
               );
             })}
 
+            <h5 className="h5 uppercase mt-4">
+              category:<span className="ml-2">{product.category}</span>
+            </h5>
             <h2 className="h3 mt-4">{product.title}</h2>
 
             <div className="flex items-center gap-2">
@@ -38,6 +41,10 @@ export default function ProductPage({ product }) {
             <div className="mt-6">
               <VariantPicker variants={product.variants} />
             </div>
+
+            <h5 className="h5 uppercase mb-4">
+              Stock:<span className="ml-2">{product.stock}</span>
+            </h5>
 
             <p className=" text-gray-600 leading-relaxed">
               {product.description}

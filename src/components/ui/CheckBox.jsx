@@ -52,11 +52,10 @@ const CheckBox = ({
         name={name}
         value={value}
         checked={checked}
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.value, e.target.checked)}
         disabled={disabled}
         className={inputBase}
       />
-
       {type === "color" ? (
         <span
           className={colorCircle}
@@ -82,7 +81,6 @@ const CheckBox = ({
           )}
         </span>
       )}
-
       {/* Label only for default or color types */}
       {type !== "button" && (
         <span className="text-sm font-medium text-dark-gray">{label}</span>

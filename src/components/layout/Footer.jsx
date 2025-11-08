@@ -50,7 +50,7 @@ const Footer = () => {
       </div>
 
       <div className="px-4 pt-6  bg-dark-gray rounded-3xl lg:px-8 lg:pt-16">
-        <div className="flex gap-6 flex-col xl:flex-row xl:justify-between">
+        <div className="flex gap-6 justify-between flex-wrap flex-row">
           <div className="lg:w-[446px]">
             <h6 className="text-yellow h5">About us</h6>
             <p className="font-open-sans text-natural-light p">
