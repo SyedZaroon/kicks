@@ -3,7 +3,9 @@
 import SelectField from "../ui/SelectField";
 import { useRouter, usePathname } from "next/navigation";
 
-const SortingFilter = ({ currentSort, currentQuery }) => {
+const SortingFilter = ({ currentSort, currentQuery, products }) => {
+  if (!products || products.length === 0) return null;
+
   const router = useRouter();
   const pathname = usePathname();
 
@@ -53,9 +55,7 @@ const SortingFilter = ({ currentSort, currentQuery }) => {
       <SelectField
         name="sorting"
         options={sortingOptions}
-        value={`${currentQuery._sort || "sale_price"}-${
-          currentQuery._order || "asc"
-        }`}
+        value={`${currentQuery._sort || ""}-${currentQuery._order || ""}`}
         onChange={handleChange}
       />
     </form>

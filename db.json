@@ -436,7 +436,7 @@
       "regular_price": 175,
       "sale_price": 140,
       "variants": {
-        "color": ["Gray", "Volt", "Black", "Blue", "White", "Orange"],
+        "color": ["Gray", "Violet", "Black", "Blue", "White", "Orange"],
         "size": [7, 8, 9, 10, 11],
         "condition": ["Used"]
       },

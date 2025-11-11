@@ -21,6 +21,10 @@ const Collection = async ({ params, searchParams }) => {
     ...resolvedSearchParams,
   });
 
+  const { products: allProducts } = await fetchProducts({
+    category: collection,
+  });
+
   return (
     <div className="section-margin pb-8">
       <div className=" lg:pt-20 lg:pb-8 py-8">
@@ -34,16 +38,18 @@ const Collection = async ({ params, searchParams }) => {
         <SortingFilter
           currentSort={resolvedSearchParams.sort}
           currentQuery={resolvedSearchParams}
+          products={products}
         />
       </div>
       <div className="grid gap-16 grid-cols-1 xl:grid-cols-3">
         <div className="fixed top-1/2 -translate-y-1/2 left-0 z-50 xl:static xl:top-auto xl:translate-y-0">
-          <ProductFilter products={products} />
+          <ProductFilter products={allProducts} />
         </div>
         <div className="col-span-2">
           <CollectionGrid products={products} />
           <Pagination
             totalCount={totalCount}
+            products={products}
             limit={limit}
             currentPage={page}
             basePath={`/collection/${collection}`}
