@@ -212,7 +212,7 @@
       "regular_price": 110,
       "sale_price": 90,
       "variants": {
-        "color": ["White", "Black", "Cream", "Red"],
+        "color": ["White", "Black", "mintcream", "Red"],
         "size": [6, 7, 8, 9, 10, 11],
         "condition": ["New"]
       },
@@ -1216,7 +1216,7 @@
     },
     {
       "id": 43,
-      "title": "Nike Air Zoom Tempo NEXT%",
+      "title": "Nike Air Zoom Tempo NEXT",
       "description": "Combining durability with speed, the Tempo NEXT% is built for training runs and race day.",
       "images": [
         "/productImages/product1.png",
@@ -1234,7 +1234,7 @@
       "stock": 4,
       "category": "men",
       "tags": ["New", "Running"],
-      "slug": "nike-air-zoom-tempo-next%",
+      "slug": "nike-air-zoom-tempo-next",
       "reviews": [
         {
           "user": "Noman",
@@ -1363,7 +1363,7 @@
       "regular_price": 100,
       "sale_price": 85,
       "variants": {
-        "color": ["White", "Black", "Cream"],
+        "color": ["White", "Black", "mintcream"],
         "size": [6, 7, 8, 9, 10],
         "condition": ["New", "Used", "Refurbished"]
       },

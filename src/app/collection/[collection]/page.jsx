@@ -42,7 +42,7 @@ const Collection = async ({ params, searchParams }) => {
         />
       </div>
       <div className="grid gap-16 grid-cols-1 xl:grid-cols-3">
-        <div className="fixed top-1/2 -translate-y-1/2 left-0 z-50 xl:static xl:top-auto xl:translate-y-0">
+        <div className="">
           <ProductFilter products={allProducts} />
         </div>
         <div className="col-span-2">

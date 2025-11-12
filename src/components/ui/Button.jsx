@@ -8,6 +8,7 @@ const Button = ({
   children,
   onClick,
   iconclass = "",
+  iconSize = 16,
 }) => {
   const baseClasses = `rounded-lg font-inter weight-medium text-sm flex items-center gap-1 p-4 hover:outline-1 ${
     state === "primary" ? "hover:outline-dark-gray" : "hover:outline-blue"
@@ -35,9 +36,9 @@ const Button = ({
       } ${baseClasses} text-white ${className}`}
       onClick={onClick}
     >
-      {LeftIcon && <LeftIcon className={iconclass} size={16} />}
+      {LeftIcon && <LeftIcon className={iconclass} size={iconSize} />}
       {children}
-      {RightIcon && <RightIcon className={iconclass} size={16} />}
+      {RightIcon && <RightIcon className={iconclass} size={iconSize} />}
     </button>
   );
 };
