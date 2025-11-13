@@ -26,9 +26,6 @@ const ProductFilterContent = ({ products }) => {
     });
   });
 
-  const router = useRouter();
-  const pathname = usePathname();
-
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -38,6 +35,37 @@ const ProductFilterContent = ({ products }) => {
       document.body.style.overflow = "auto";
     }
   }, [isOpen]);
+
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [selectedFilters, setSelectedFilters] = useState({});
+  const [priceRange, setPriceRange] = useState({
+    min: 0,
+    max: maxSalePrice,
+  });
+
+  const handleFilterChange = (name, value, checked) => {
+    setSelectedFilters((prev) => {
+      const currentValues = prev[name] || [];
+
+      if (checked) {
+        return {
+          ...prev,
+          [name]: [...currentValues, value],
+        };
+      } else {
+        const updatedValues = currentValues.filter((v) => v !== value);
+        const newFilters = { ...prev, [name]: updatedValues };
+
+        if (updatedValues.length === 0) {
+          delete newFilters[name];
+        }
+
+        return newFilters;
+      }
+    });
+  };
 
   return (
     <>
@@ -119,22 +147,11 @@ const ProductFilterContent = ({ products }) => {
                       label={option}
                       value={option}
                       name={name}
-                      onChange={(e) => {
-                        const newQuery = {
-                          ...currentQuery,
-                          [name]: option,
-                        };
-                        const queryString = new URLSearchParams(
-                          newQuery
-                        ).toString();
-                        router.push(`${pathname}?${queryString}`, {
-                          scroll: false,
-                        });
-                      }}
                       disabled={false}
                       colorCode={name === "color" ? option : ""}
                       size={name === "size" ? option : ""}
                       type={name === "color" ? "color" : "default"}
+                      filterChange={handleFilterChange}
                     />
                   ))}
               </div>

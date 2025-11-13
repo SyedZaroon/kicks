@@ -8,7 +8,6 @@ const Pagination = ({ totalCount, limit, currentPage, basePath, products }) => {
 
   const router = useRouter();
   const totalPages = Math.ceil(totalCount / limit);
-
   const [pageNumber, setPageNumber] = useState(currentPage);
 
   useEffect(() => {
@@ -27,6 +26,33 @@ const Pagination = ({ totalCount, limit, currentPage, basePath, products }) => {
     if (pageNumber < totalPages) setPageNumber(pageNumber + 1);
   };
 
+  // 🔹 Smart pagination logic
+  const getVisiblePages = () => {
+    if (totalPages <= 5) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    if (pageNumber <= 3) {
+      return [1, 2, 3, "...", totalPages];
+    }
+
+    if (pageNumber >= totalPages - 2) {
+      return [1, "...", totalPages - 2, totalPages - 1, totalPages];
+    }
+
+    return [
+      1,
+      "...",
+      pageNumber - 1,
+      pageNumber,
+      pageNumber + 1,
+      "...",
+      totalPages,
+    ];
+  };
+
+  const visiblePages = getVisiblePages();
+
   return (
     <div className="flex justify-center items-center gap-4 mt-4">
       <Button
@@ -40,17 +66,25 @@ const Pagination = ({ totalCount, limit, currentPage, basePath, products }) => {
       </Button>
 
       <div className="flex items-center gap-2">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <Button
-            key={page}
-            onClick={() => setPageNumber(page)}
-            className={`w-12 justify-center ${
-              pageNumber === page ? "bg-white !text-black shadow-amber-50" : ""
-            }`}
-          >
-            {page}
-          </Button>
-        ))}
+        {visiblePages.map((page, i) =>
+          page === "..." ? (
+            <span key={`dots-${i}`} className="text-gray-400 px-2">
+              ...
+            </span>
+          ) : (
+            <Button
+              key={page}
+              onClick={() => setPageNumber(page)}
+              className={`w-12 justify-center ${
+                pageNumber === page
+                  ? "bg-white !text-black shadow-amber-50"
+                  : ""
+              }`}
+            >
+              {page}
+            </Button>
+          )
+        )}
       </div>
 
       <Button

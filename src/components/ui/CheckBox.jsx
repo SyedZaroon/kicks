@@ -7,6 +7,7 @@ const CheckBox = ({
   name = "",
   colorCode = "",
   size = "",
+  filterChange,
 }) => {
   const [checked, setChecked] = useState(false);
 
@@ -17,7 +18,11 @@ const CheckBox = ({
         name={name}
         value={value}
         checked={checked}
-        onChange={() => setChecked(!checked)}
+        onChange={(e) => {
+          const newChecked = !checked;
+          setChecked(newChecked);
+          filterChange(name, value, newChecked);
+        }}
         className="hidden"
       />
 
