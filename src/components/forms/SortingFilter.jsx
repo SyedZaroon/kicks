@@ -1,13 +1,14 @@
 "use client";
 
 import SelectField from "../ui/SelectField";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
-const SortingFilter = ({ currentSort, currentQuery, products }) => {
+const SortingFilter = ({ products }) => {
   if (!products || products.length === 0) return null;
 
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const sortingOptions = [
     {
@@ -39,23 +40,24 @@ const SortingFilter = ({ currentSort, currentQuery, products }) => {
   const handleChange = (e) => {
     const selected = sortingOptions.find((opt) => opt.value === e.target.value);
 
-    // preserve old query params but replace sort/order
-    const newQuery = {
-      ...currentQuery,
-      _sort: selected.sort,
-      _order: selected.order,
-    };
+    const params = new URLSearchParams(searchParams);
 
-    const queryString = new URLSearchParams(newQuery).toString();
-    router.push(`${pathname}?${queryString}`, { scroll: false });
+    params.set("_sort", selected.sort);
+    params.set("_order", selected.order);
+
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
+
+  const currentValue = `${searchParams.get("_sort") || ""}-${
+    searchParams.get("_order") || ""
+  }`;
 
   return (
     <form onSubmit={handleChange} className="flex flex-wrap gap-6 items-end">
       <SelectField
         name="sorting"
         options={sortingOptions}
-        value={`${currentQuery._sort || ""}-${currentQuery._order || ""}`}
+        value={currentValue}
         onChange={handleChange}
       />
     </form>

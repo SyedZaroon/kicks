@@ -1359,7 +1359,12 @@
       "id": 48,
       "title": "Nike Blazer Low '77 Vintage",
       "description": "Old-school style meets modern comfort with the Nike Blazer Low '77 Vintage.",
-      "images": ["/productImages/product4.png"],
+      "images": [
+        "/productImages/product1.png",
+        "/productImages/product2.png",
+        "/productImages/product3.png",
+        "/productImages/product4.png"
+      ],
       "regular_price": 100,
       "sale_price": 85,
       "variants": {

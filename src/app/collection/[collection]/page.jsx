@@ -35,11 +35,7 @@ const Collection = async ({ params, searchParams }) => {
           <h5 className="h5 uppercase">{collection}</h5>
           <p className="p">{totalCount} items</p>
         </div>
-        <SortingFilter
-          currentSort={resolvedSearchParams.sort}
-          currentQuery={resolvedSearchParams}
-          products={products}
-        />
+        <SortingFilter products={products} />
       </div>
       <div className="grid gap-16 grid-cols-1 xl:grid-cols-3">
         <div className="">

@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Button from "./Button";
 import { useState, useEffect } from "react";
 
@@ -7,6 +7,8 @@ const Pagination = ({ totalCount, limit, currentPage, basePath, products }) => {
   if (!products || products.length === 0) return null;
 
   const router = useRouter();
+  const searchParams = useSearchParams(); // ✅ NEW
+
   const totalPages = Math.ceil(totalCount / limit);
   const [pageNumber, setPageNumber] = useState(currentPage);
 
@@ -15,7 +17,11 @@ const Pagination = ({ totalCount, limit, currentPage, basePath, products }) => {
   }, [pageNumber]);
 
   const handlePageChange = (page) => {
-    router.push(`${basePath}?_page=${page}&_limit=${limit}`, { scroll: false });
+    const params = new URLSearchParams(searchParams); // ✅ existing filters get
+    params.set("_page", page); // update just page
+    params.set("_limit", limit); // update limit (optional)
+
+    router.push(`${basePath}?${params.toString()}`, { scroll: false }); // 🔥 ALL FILTERS SAFE
   };
 
   const handlePrev = () => {

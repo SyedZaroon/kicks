@@ -6,14 +6,21 @@ export default function PriceRangeSlider({
   minLimit = "",
   maxLimit = "",
   step = 1,
-  initialMin = minLimit,
-  initialMax = maxLimit,
   color = "var(--color-dark-gray)",
   onChange,
+  setPriceRange,
+  priceRange,
 }) {
-  const [min, setMin] = useState(initialMin);
-  const [max, setMax] = useState(initialMax);
+  const [min, setMin] = useState(priceRange?.min || minLimit);
+  const [max, setMax] = useState(priceRange?.max || maxLimit);
 
+  // Keep local state synced with parent
+  useEffect(() => {
+    setMin(priceRange.min);
+    setMax(priceRange.max);
+  }, [priceRange]);
+
+  // Trigger external callback when range changes
   useEffect(() => {
     if (onChange) onChange(min, max);
   }, [min, max, onChange]);
@@ -21,11 +28,13 @@ export default function PriceRangeSlider({
   const handleMinChange = (e) => {
     const value = Math.min(Number(e.target.value), max - step);
     setMin(value);
+    setPriceRange((prev) => ({ ...prev, min: value }));
   };
 
   const handleMaxChange = (e) => {
     const value = Math.max(Number(e.target.value), min + step);
     setMax(value);
+    setPriceRange((prev) => ({ ...prev, max: value }));
   };
 
   const getBackgroundStyle = () => {

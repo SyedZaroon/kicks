@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const CheckBox = ({
@@ -7,9 +8,32 @@ const CheckBox = ({
   name = "",
   colorCode = "",
   size = "",
-  filterChange,
+  setSelectedFilters,
+  selectedFilters,
 }) => {
-  const [checked, setChecked] = useState(false);
+  const checked = selectedFilters[name]?.includes(value) || false;
+
+  const handleFilterChange = (name, value, checked) => {
+    setSelectedFilters((prev) => {
+      const currentValues = prev[name] || [];
+
+      if (checked) {
+        return {
+          ...prev,
+          [name]: [...currentValues, value],
+        };
+      } else {
+        const updatedValues = currentValues.filter((v) => v !== value);
+        const newFilters = { ...prev, [name]: updatedValues };
+
+        if (updatedValues.length === 0) {
+          delete newFilters[name];
+        }
+
+        return newFilters;
+      }
+    });
+  };
 
   return (
     <label className="flex items-center gap-2 cursor-pointer">
@@ -20,8 +44,7 @@ const CheckBox = ({
         checked={checked}
         onChange={(e) => {
           const newChecked = !checked;
-          setChecked(newChecked);
-          filterChange(name, value, newChecked);
+          handleFilterChange(name, value, newChecked);
         }}
         className="hidden"
       />

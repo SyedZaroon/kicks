@@ -2,12 +2,16 @@
 import React, { useEffect, useState } from "react";
 import CheckBox from "../ui/CheckBox";
 import PriceRangeSlider from "../ui/PriceRange";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import CloseOutlineIcon from "@/assets/icons/outline/CloseOutline";
-import Button from "../ui/Button";
 
 const ProductFilterContent = ({ products }) => {
   if (!products || products.length === 0) return null;
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams);
 
   const variantMap = {};
   const salePriceMap = new Set();
@@ -36,36 +40,60 @@ const ProductFilterContent = ({ products }) => {
     }
   }, [isOpen]);
 
-  const router = useRouter();
-  const pathname = usePathname();
-
   const [selectedFilters, setSelectedFilters] = useState({});
   const [priceRange, setPriceRange] = useState({
     min: 0,
     max: maxSalePrice,
   });
 
-  const handleFilterChange = (name, value, checked) => {
+  const [priceRangeChange, setPriceRangeChange] = useState(false);
+
+  useEffect(() => {
+    if (priceRange.min > 0 || priceRange.max < maxSalePrice) {
+      setPriceRangeChange(true);
+    }
+  }, [priceRange]);
+
+  const clearAllFilter = () => {
+    setSelectedFilters({});
+    setPriceRange({ min: 0, max: maxSalePrice });
+    setPriceRangeChange(false);
+  };
+
+  const closeSelectedfilter = (key, value) => {
     setSelectedFilters((prev) => {
-      const currentValues = prev[name] || [];
+      const updated = { ...prev };
 
-      if (checked) {
-        return {
-          ...prev,
-          [name]: [...currentValues, value],
-        };
-      } else {
-        const updatedValues = currentValues.filter((v) => v !== value);
-        const newFilters = { ...prev, [name]: updatedValues };
+      updated[key] = prev[key].filter((v) => v !== value);
 
-        if (updatedValues.length === 0) {
-          delete newFilters[name];
-        }
-
-        return newFilters;
+      if (updated[key].length === 0) {
+        delete updated[key];
       }
+
+      return updated;
     });
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+
+    // add selected variant filters
+    Object.entries(selectedFilters).forEach(([key, values]) => {
+      if (values.length > 0) {
+        values.forEach((value) => {
+          params.append(`variants.${key}_like`, value);
+        });
+      }
+    });
+
+    // add price range if changed
+    if (priceRangeChange) {
+      params.set("sale_price_gte", priceRange.min);
+      params.set("sale_price_lte", priceRange.max);
+    }
+
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  }, [selectedFilters, priceRange, priceRangeChange]);
 
   return (
     <>
@@ -102,20 +130,57 @@ const ProductFilterContent = ({ products }) => {
             <CloseOutlineIcon size={12} />
           </div>
         </div>
-        <div className="mb-4">
-          <h6 className="font-medium capitalize mb-2">Refine By</h6>
-          <div>
-            <Button
-              className="text-white w-[26%] justify-between"
-              iconclass="text-white"
-              iconSize={12}
-              rightIcon={CloseOutlineIcon}
-              state="secondary"
-            >
-              Mens
-            </Button>
+        {(Object.keys(selectedFilters).length > 0 || priceRangeChange) && (
+          <div className="mb-4">
+            <div className="flex items-center justify-between">
+              <h6 className="font-medium capitalize mb-2">Refine By</h6>
+              <h6
+                className="font-medium capitalize mb-2 cursor-pointer"
+                onClick={clearAllFilter}
+              >
+                Clear All
+              </h6>
+            </div>
+
+            <div className="flex items-center gap-2 flex-wrap">
+              {Object.entries(selectedFilters).map(([key, values]) =>
+                values.map((value) => (
+                  <div className="flex items-center gap-2 bg-gray-200 px-2 py-1 rounded-full text-sm">
+                    <span>{value}</span>
+                    <button
+                      className="cursor-pointer"
+                      onClick={() => {
+                        closeSelectedfilter(key, value);
+                      }}
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))
+              )}
+              {priceRangeChange && (
+                <div className="flex items-center gap-2 bg-gray-200 px-2 py-1 rounded-full text-sm">
+                  <span>
+                    Price: £{priceRange.min > 0 ? priceRange.min : 0} - £
+                    {priceRange.max < maxSalePrice
+                      ? priceRange.max
+                      : maxSalePrice}
+                  </span>
+                  <button
+                    onClick={() => {
+                      setPriceRangeChange(false);
+                      setPriceRange({ min: 0, max: maxSalePrice });
+                    }}
+                    className="text-gray-600 hover:text-black cursor-pointer"
+                  >
+                    ✕
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        )}
+
         <div>
           {Object.entries(variantMap).map(([name, options]) => (
             <div key={name} className="mb-4">
@@ -151,14 +216,20 @@ const ProductFilterContent = ({ products }) => {
                       colorCode={name === "color" ? option : ""}
                       size={name === "size" ? option : ""}
                       type={name === "color" ? "color" : "default"}
-                      filterChange={handleFilterChange}
+                      setSelectedFilters={setSelectedFilters}
+                      selectedFilters={selectedFilters}
                     />
                   ))}
               </div>
             </div>
           ))}
         </div>
-        <PriceRangeSlider minLimit={0} maxLimit={maxSalePrice} />
+        <PriceRangeSlider
+          minLimit={0}
+          maxLimit={maxSalePrice}
+          setPriceRange={setPriceRange}
+          priceRange={priceRange}
+        />
       </div>
     </>
   );
