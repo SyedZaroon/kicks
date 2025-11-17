@@ -1,61 +1,54 @@
 "use client";
 
+import React from "react";
+
 const RadioButton = ({
-  type = "button",
-  label = "",
-  value = "",
-  name = "",
+  name,
+  value,
+  label,
   checked = false,
   onChange = () => {},
-  disabled = false,
-  colorCode = "",
-  className = "",
+  state = "default",
 }) => {
-  const baseClasses = `
-    flex items-center justify-center rounded-md cursor-pointer transition-all duration-200
-    font-inter font-medium text-sm
-  `;
-
-  const inputBase = `
-    absolute opacity-0 pointer-events-none
-  `;
-  const buttonStyles = `
-    px-4 py-2 outline ${
-      checked
-        ? "outline-gray outline-offset-2 bg-gray text-white"
-        : "outline-neutrals-gray-3 text-dark-gray bg-transparent"
-    }
-    ${disabled ? "opacity-50 cursor-not-allowed" : "hover:outline-gray"}
-  `;
-
-  const colorStyles = `
-    w-8 h-8 rounded-full outline outline-1
-    ${checked ? "outline-gray outline-offset-2" : "outline-transparent"}
-    ${disabled ? "opacity-40 cursor-not-allowed" : "hover:scale-105"}
-  `;
+  if (state === "color") {
+    return (
+      <label className="relative cursor-pointer">
+        <input
+          type="radio"
+          name={name}
+          value={value}
+          checked={checked}
+          onChange={onChange}
+          className="absolute opacity-0 w-0 h-0"
+        />
+        <span
+          className={`w-8 h-8 rounded-full block ${
+            checked ? "outline-black outline-offset-2 outline-2" : ""
+          }`}
+          style={{ backgroundColor: value }}
+        ></span>
+      </label>
+    );
+  }
 
   return (
-    <label
-      className={`relative inline-flex items-center gap-2 select-none ${className}`}
-    >
+    <label>
       <input
         type="radio"
         name={name}
         value={value}
         checked={checked}
         onChange={onChange}
-        disabled={disabled}
-        className={inputBase}
+        className="absolute opacity-0 w-0 h-0"
       />
 
-      {type === "color" ? (
-        <span
-          className={`${colorStyles}`}
-          style={{ backgroundColor: colorCode }}
-        ></span>
-      ) : (
-        <span className={`${baseClasses} ${buttonStyles}`}>{label}</span>
-      )}
+      <div
+        className={` cursor-pointer py-2 px-4  rounded-lg ${
+          checked ? "bg-black text-white" : "bg-white text-black "
+        }`}
+      >
+        <p>{label}</p>
+      </div>
     </label>
   );
 };

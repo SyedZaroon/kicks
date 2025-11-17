@@ -8,33 +8,10 @@ const CheckBox = ({
   name = "",
   colorCode = "",
   size = "",
-  setSelectedFilters,
-  selectedFilters,
+  checked = true,
+  onChange = () => {},
+  colorVariantClass = "w-12 h-12 rounded-xl",
 }) => {
-  const checked = selectedFilters[name]?.includes(value) || false;
-
-  const handleFilterChange = (name, value, checked) => {
-    setSelectedFilters((prev) => {
-      const currentValues = prev[name] || [];
-
-      if (checked) {
-        return {
-          ...prev,
-          [name]: [...currentValues, value],
-        };
-      } else {
-        const updatedValues = currentValues.filter((v) => v !== value);
-        const newFilters = { ...prev, [name]: updatedValues };
-
-        if (updatedValues.length === 0) {
-          delete newFilters[name];
-        }
-
-        return newFilters;
-      }
-    });
-  };
-
   return (
     <label className="flex items-center gap-2 cursor-pointer">
       <input
@@ -42,17 +19,14 @@ const CheckBox = ({
         name={name}
         value={value}
         checked={checked}
-        onChange={(e) => {
-          const newChecked = !checked;
-          handleFilterChange(name, value, newChecked);
-        }}
+        onChange={onChange}
         className="hidden"
       />
 
       {/* 🎨 Color box */}
       {colorCode && (
         <div
-          className={`w-12 h-12 rounded-xl transition-all duration-200 ${
+          className={` ${colorVariantClass} transition-all duration-200 ${
             checked
               ? "outline-2 outline-black outline-offset-2"
               : "outline-2 outline-transparent outline-offset-2"

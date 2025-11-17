@@ -11,7 +11,7 @@ const InputField = ({
   borderColor = "border-dark-gray",
   placeholderColor = "placeholder:text-neutrals-gray-6",
   textColor = "text-neutrals-gray-10",
-  wrapperClassName = "",
+  wrapperClassName = "py-[14.5px]",
   fieldContainerClassName = "",
   id = "",
   name = "",
@@ -19,8 +19,8 @@ const InputField = ({
   onChange = () => {},
 }) => {
   const baseClasses = {
-    wrapper: `flex py-[14.5px] px-4 justify-between items-center rounded-lg border ${wrapperClassName}`,
-    input: `font-inter appearance-none outline-none border-none bg-transparent focus:ring-0 flex-1`,
+    wrapper: `flex  px-4 justify-between items-center rounded-lg border ${wrapperClassName}`,
+    input: `font-inter appearance-none outline-none border-none bg-transparent focus:ring-0 flex-1 w-full`,
     helper: `font-inter mt-1 text-[12px]`,
   };
 

@@ -8,12 +8,10 @@ const OrderSummary = ({
   onCheckout,
 }) => {
   // Calculate subtotal
-  const subtotal = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const subtotal = items.reduce((sum, item) => sum + item.total, 0);
   const total = subtotal + delivery + tax;
-  const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
+
+  const itemCount = items.reduce((sum, item) => sum + item.qty, 0);
 
   return (
     <div className={`bg-white rounded-lg p-4 lg:p-6 ${className}`}>
@@ -26,12 +24,8 @@ const OrderSummary = ({
         {/* Item Count and Subtotal */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-gray font-medium">
-              {itemCount} ITEM{itemCount !== 1 ? "S" : ""}
-            </span>
-            <span className="text-dark-gray font-semibold">
-              ${subtotal.toFixed(2)}
-            </span>
+            <span className="text-gray font-medium">Total Items</span>
+            <span className="text-dark-gray font-semibold">{itemCount}</span>
           </div>
 
           <div className="flex items-center justify-between">

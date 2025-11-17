@@ -30,7 +30,7 @@ const ProductCard = ({
         </div>
         <h5 className="h5 mt-4">{productName}</h5>
         <Link className="cursor-pointer" href={`/product/${slug}`}>
-          <Button className="mt-4 w-full justify-center h4">
+          <Button className="mt-4 w-full justify-center h4 cursor-pointer">
             View Product - <span className="text-yellow">${productPrice}</span>
           </Button>
         </Link>

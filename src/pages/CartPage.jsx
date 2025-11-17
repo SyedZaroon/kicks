@@ -1,79 +1,53 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CartItem from "@/components/sections/CartItem";
 import OrderSummary from "@/components/sections/OrderSummary";
 import PromoCode from "@/components/ui/PromoCode";
 import Button from "@/components/ui/Button";
 
-// Sample cart data - in a real app, this would come from context/state management
-const initialCartItems = [
-  {
-    id: 1,
-    name: "DROPSET TRAINER SHOES",
-    subtitle: "Men's Road Running Shoes",
-    color: "Enamel Blue/ University White",
-    size: "10",
-    price: 130.0,
-    image: "/api/placeholder/120/120",
-    quantity: 1,
-  },
-];
-
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState(initialCartItems);
-  const [promoCode, setPromoCode] = useState(null);
-  const [discount, setDiscount] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
 
-  // Handle quantity updates
-  const handleUpdateQuantity = (productId, newQuantity) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === productId ? { ...item, quantity: newQuantity } : item
-      )
-    );
+  // Load cart on page load
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCartItems(storedCart);
+  }, []);
+
+  // Save cart when changed
+  const updateLocalStorage = (updatedCart) => {
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  // Handle item removal
-  const handleRemoveItem = (productId) => {
-    setCartItems((prevItems) =>
-      prevItems.filter((item) => item.id !== productId)
-    );
+  // remove item
+  const removeItem = (productId) => {
+    const updatedCart = cartItems.filter((item) => item.id !== productId);
+    setCartItems(updatedCart);
+    updateLocalStorage(updatedCart);
   };
 
-  // Handle move to wishlist (placeholder)
-  const handleMoveToWishlist = (productId) => {
-    // In a real app, this would move the item to wishlist
-    console.log("Moving item to wishlist:", productId);
-    handleRemoveItem(productId);
-  };
+  const updateQuantity = (productId, newQuantity, stock) => {
+    const updatedCart = cartItems.map((item) => {
+      if (item.id === productId) {
+        let qty = newQuantity;
 
-  // Handle promo code application
-  const handleApplyPromoCode = async (code) => {
-    // Simulate API call for promo code validation
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // Mock promo codes
-        const validCodes = {
-          SAVE10: 10,
-          WELCOME20: 20,
-          STUDENT15: 15,
-        };
-
-        if (validCodes[code]) {
-          setPromoCode(code);
-          setDiscount(validCodes[code]);
-          resolve();
-        } else {
-          reject(new Error("Invalid promo code"));
+        if (qty > stock) {
+          alert("You cannot add more than " + stock + " items");
+          qty = stock;
         }
-      }, 1000);
-    });
-  };
+        if (qty < 1) qty = 1;
 
-  // Handle checkout
-  const handleCheckout = () => {
-    console.log("Proceeding to checkout...");
-    // In a real app, this would redirect to checkout page
+        return {
+          ...item,
+          qty,
+          total: qty * item.price, // ✅ update product total price
+        };
+      }
+      return item;
+    });
+
+    setCartItems(updatedCart);
+    updateLocalStorage(updatedCart);
   };
 
   // Calculate if cart is empty
@@ -137,9 +111,8 @@ const CartPage = () => {
                       <CartItem
                         key={item.id}
                         product={item}
-                        onUpdateQuantity={handleUpdateQuantity}
-                        onRemove={handleRemoveItem}
-                        onMoveToWishlist={handleMoveToWishlist}
+                        onRemove={removeItem}
+                        onUpdateQuantity={updateQuantity}
                       />
                     ))}
                   </div>
@@ -150,20 +123,11 @@ const CartPage = () => {
               <div className="lg:col-span-4">
                 <div className="space-y-6 lg:sticky lg:top-8">
                   {/* Order Summary */}
-                  <OrderSummary
-                    items={cartItems}
-                    delivery={6.99}
-                    tax={0}
-                    onCheckout={handleCheckout}
-                  />
+                  <OrderSummary items={cartItems} delivery={6.99} tax={0} />
 
                   {/* Promo Code */}
                   <div className="bg-white rounded-lg p-4 lg:p-6">
-                    <PromoCode
-                      onApply={handleApplyPromoCode}
-                      appliedCode={promoCode}
-                      discount={discount}
-                    />
+                    <PromoCode />
                   </div>
                 </div>
               </div>

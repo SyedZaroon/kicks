@@ -11,7 +11,7 @@ const ProductFilterContent = ({ products }) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams);
+  const params = new URLSearchParams(searchParams.toString());
 
   const variantMap = {};
   const salePriceMap = new Set();
@@ -33,14 +33,11 @@ const ProductFilterContent = ({ products }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
-  const [selectedFilters, setSelectedFilters] = useState({});
+  // Price Range
+
   const [priceRange, setPriceRange] = useState({
     min: 0,
     max: maxSalePrice,
@@ -54,6 +51,32 @@ const ProductFilterContent = ({ products }) => {
     }
   }, [priceRange]);
 
+  // Selected Filters
+
+  const [selectedFilters, setSelectedFilters] = useState({});
+
+  const handleFilterChange = (name, value, checked) => {
+    setSelectedFilters((prev) => {
+      const currentValues = prev[name] || [];
+
+      if (checked) {
+        return {
+          ...prev,
+          [name]: [...currentValues, value],
+        };
+      } else {
+        const updatedValues = currentValues.filter((v) => v !== value);
+        const newFilters = { ...prev, [name]: updatedValues };
+
+        if (updatedValues.length === 0) delete newFilters[name];
+
+        return newFilters;
+      }
+    });
+  };
+
+  // Clear Filters
+
   const clearAllFilter = () => {
     setSelectedFilters({});
     setPriceRange({ min: 0, max: maxSalePrice });
@@ -63,7 +86,6 @@ const ProductFilterContent = ({ products }) => {
   const closeSelectedfilter = (key, value) => {
     setSelectedFilters((prev) => {
       const updated = { ...prev };
-
       updated[key] = prev[key].filter((v) => v !== value);
 
       if (updated[key].length === 0) {
@@ -74,19 +96,17 @@ const ProductFilterContent = ({ products }) => {
     });
   };
 
+  // Update URL Params
+
   useEffect(() => {
     const params = new URLSearchParams();
 
-    // add selected variant filters
     Object.entries(selectedFilters).forEach(([key, values]) => {
-      if (values.length > 0) {
-        values.forEach((value) => {
-          params.append(`variants.${key}_like`, value);
-        });
-      }
+      values.forEach((value) => {
+        params.append(`variants.${key}_like`, value);
+      });
     });
 
-    // add price range if changed
     if (priceRangeChange) {
       params.set("sale_price_gte", priceRange.min);
       params.set("sale_price_lte", priceRange.max);
@@ -103,6 +123,7 @@ const ProductFilterContent = ({ products }) => {
         }`}
         onClick={() => setIsOpen(false)}
       ></div>
+
       <div
         className="fixed top-1/2 -translate-y-1/2 left-0 z-50 xl:hidden bg-white p-2 rounded-xs "
         onClick={() => setIsOpen(!isOpen)}
@@ -149,29 +170,25 @@ const ProductFilterContent = ({ products }) => {
                     <span>{value}</span>
                     <button
                       className="cursor-pointer"
-                      onClick={() => {
-                        closeSelectedfilter(key, value);
-                      }}
+                      onClick={() => closeSelectedfilter(key, value)}
                     >
                       ✕
                     </button>
                   </div>
                 ))
               )}
+
               {priceRangeChange && (
                 <div className="flex items-center gap-2 bg-gray-200 px-2 py-1 rounded-full text-sm">
                   <span>
-                    Price: £{priceRange.min > 0 ? priceRange.min : 0} - £
-                    {priceRange.max < maxSalePrice
-                      ? priceRange.max
-                      : maxSalePrice}
+                    Price: £{priceRange.min} - £{priceRange.max}
                   </span>
                   <button
+                    className="cursor-pointer"
                     onClick={() => {
-                      setPriceRangeChange(false);
                       setPriceRange({ min: 0, max: maxSalePrice });
+                      setPriceRangeChange(false);
                     }}
-                    className="text-gray-600 hover:text-black cursor-pointer"
                   >
                     ✕
                   </button>
@@ -185,8 +202,9 @@ const ProductFilterContent = ({ products }) => {
           {Object.entries(variantMap).map(([name, options]) => (
             <div key={name} className="mb-4">
               <h6 className="font-medium mb-2 capitalize">{name}</h6>
+
               <div
-                className={`flex  flex-wrap ${
+                className={`flex flex-wrap ${
                   name !== "color" && name !== "size"
                     ? "flex-col gap-2"
                     : "gap-4"
@@ -196,30 +214,30 @@ const ProductFilterContent = ({ products }) => {
                   .sort((a, b) => {
                     const isNumA = !isNaN(a);
                     const isNumB = !isNaN(b);
-
-                    if (isNumA && isNumB) {
-                      return Number(a) - Number(b);
-                    }
-
-                    if (!isNumA && !isNumB) {
-                      return a.toLowerCase().localeCompare(b.toLowerCase());
-                    }
+                    if (isNumA && isNumB) return Number(a) - Number(b);
+                    if (!isNumA && !isNumB) return a.localeCompare(b);
                   })
-                  .map((option) => (
-                    <CheckBox
-                      key={option}
-                      className="border border-gray-300 px-3 py-1 rounded hover:bg-gray-100 text-sm"
-                      label={option}
-                      value={option}
-                      name={name}
-                      disabled={false}
-                      colorCode={name === "color" ? option : ""}
-                      size={name === "size" ? option : ""}
-                      type={name === "color" ? "color" : "default"}
-                      setSelectedFilters={setSelectedFilters}
-                      selectedFilters={selectedFilters}
-                    />
-                  ))}
+                  .map((option) => {
+                    const isChecked =
+                      selectedFilters[name]?.includes(option) || false;
+
+                    return (
+                      <CheckBox
+                        key={option}
+                        label={option}
+                        value={option}
+                        name={name}
+                        className="border border-gray-300 px-3 py-1 rounded hover:bg-gray-100 text-sm"
+                        colorCode={name === "color" ? option : ""}
+                        size={name === "size" ? option : ""}
+                        type={name === "color" ? "color" : "default"}
+                        checked={isChecked}
+                        onChange={() =>
+                          handleFilterChange(name, option, !isChecked)
+                        }
+                      />
+                    );
+                  })}
               </div>
             </div>
           ))}

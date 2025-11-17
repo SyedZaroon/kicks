@@ -1,29 +1,15 @@
-import HeartOutline from "../../assets/icons/outline/HeartOutline";
 import TrashOutline from "../../assets/icons/outline/TrashOutline";
-import MinusOutline from "../../assets/icons/outline/MinusOutline";
-import PlusOutlineIcon from "../../assets/icons/outline/PlusOutline";
 import Icon from "../ui/Icon";
+import QuantitySelector from "../ui/QuantitySelector";
+import { useState } from "react";
 
 const CartItem = ({
-  product = {
-    id: 1,
-    name: "DROPSET TRAINER SHOES",
-    subtitle: "Men's Road Running Shoes",
-    color: "Enamel Blue/ University White",
-    size: "10",
-    price: 130.0,
-    image: "/api/placeholder/120/120",
-    quantity: 1,
-  },
+  product = "",
   onUpdateQuantity,
   onRemove,
-  onMoveToWishlist,
   className = "",
 }) => {
-  const handleQuantityChange = (newQuantity) => {
-    if (newQuantity < 1) return;
-    onUpdateQuantity?.(product.id, newQuantity);
-  };
+  console.log(product);
 
   return (
     <div className={`bg-white rounded-lg p-4 lg:p-6 ${className}`}>
@@ -32,139 +18,53 @@ const CartItem = ({
         <div className="w-full lg:w-32 h-32 lg:h-32 flex-shrink-0">
           <img
             src={product.image}
-            alt={product.name}
+            alt={product.title}
             className="w-full h-full object-cover rounded-lg"
           />
         </div>
 
         {/* Product Details */}
         <div className="flex-1">
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
-            {/* Product Info */}
-            <div className="flex-1">
-              <h3 className="h4 text-dark-gray mb-1">{product.name}</h3>
-              <p className="text-gray text-sm mb-2">{product.subtitle}</p>
-              <p className="text-gray text-sm mb-4">{product.color}</p>
-
-              {/* Size & Quantity - Mobile */}
-              <div className="flex items-center gap-4 lg:hidden mb-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray">Size</span>
-                  <select className="text-sm border border-light-gray rounded px-2 py-1 bg-white">
-                    <option value={product.size}>{product.size}</option>
-                  </select>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray">Quantity</span>
-                  <div className="flex items-center border border-light-gray rounded">
-                    <button
-                      onClick={() => handleQuantityChange(product.quantity - 1)}
-                      className="p-1 hover:bg-gray-50 rounded-l"
-                    >
-                      <Icon
-                        icon={MinusOutline}
-                        type="text"
-                        size={16}
-                        className="text-gray"
-                      />
-                    </button>
-                    <span className="px-3 py-1 text-sm">
-                      {product.quantity}
-                    </span>
-                    <button
-                      onClick={() => handleQuantityChange(product.quantity + 1)}
-                      className="p-1 hover:bg-gray-50 rounded-r"
-                    >
-                      <Icon
-                        icon={PlusOutlineIcon}
-                        type="text"
-                        size={16}
-                        className="text-gray"
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Size & Quantity - Desktop */}
-              <div className="hidden lg:flex items-center gap-6 mt-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray">Size</span>
-                  <select className="text-sm border border-light-gray rounded px-2 py-1 bg-white">
-                    <option value={product.size}>{product.size}</option>
-                  </select>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray">Quantity</span>
-                  <div className="flex items-center border border-light-gray rounded">
-                    <button
-                      onClick={() => handleQuantityChange(product.quantity - 1)}
-                      className="p-1 hover:bg-gray-50 rounded-l"
-                    >
-                      <Icon
-                        icon={MinusOutline}
-                        type="text"
-                        size={16}
-                        className="text-gray"
-                      />
-                    </button>
-                    <span className="px-3 py-1 text-sm">
-                      {product.quantity}
-                    </span>
-                    <button
-                      onClick={() => handleQuantityChange(product.quantity + 1)}
-                      className="p-1 hover:bg-gray-50 rounded-r"
-                    >
-                      <Icon
-                        icon={PlusOutlineIcon}
-                        type="text"
-                        size={16}
-                        className="text-gray"
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
+          <div>
+            <div className="flex items-center justify-between">
+              <h3 className="h4 text-dark-gray mb-1">{product.title}</h3>
+              <p className="h4 text-blue font-semibold">${product.total}</p>
             </div>
-
-            {/* Price & Actions */}
-            <div className="flex flex-row lg:flex-col items-center lg:items-end justify-between lg:justify-start gap-4">
-              <div className="text-right">
-                <p className="h4 text-blue font-semibold">
-                  ${product.price.toFixed(2)}
-                </p>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => onMoveToWishlist?.(product.id)}
-                  className="p-2 hover:bg-gray-50 rounded-lg transition-colors"
-                  title="Move to wishlist"
+            <div>
+              {Object.entries(product.variants).map(([key, value]) => (
+                <div
+                  key={key}
+                  className="flex items-center gap-2 text-sm text-gray-600"
                 >
-                  <Icon
-                    icon={HeartOutline}
-                    type="text"
-                    size={20}
-                    className="text-gray"
-                  />
-                </button>
+                  <span className="font-medium capitalize">{key}:</span>
+                  <span>{value}</span>
+                </div>
+              ))}
+            </div>
+            <QuantitySelector
+              stock={product.stock}
+              qty={product.qty}
+              onUpdateQuantity={onUpdateQuantity}
+              productId={product.id}
+            />
+          </div>
 
-                <button
-                  onClick={() => onRemove?.(product.id)}
-                  className="p-2 hover:bg-red-50 rounded-lg transition-colors"
-                  title="Remove from cart"
-                >
-                  <Icon
-                    icon={TrashOutline}
-                    type="text"
-                    size={20}
-                    className="text-gray hover:text-red-500"
-                  />
-                </button>
-              </div>
+          {/* Price & Actions */}
+          <div className="flex flex-row lg:flex-col items-center lg:items-end justify-between lg:justify-start gap-4">
+            {/* Action Buttons */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => onRemove?.(product.id)}
+                className="p-2 hover:bg-red-50 rounded-lg transition-colors"
+                title="Remove from cart"
+              >
+                <Icon
+                  icon={TrashOutline}
+                  type="text"
+                  size={20}
+                  className="text-gray hover:text-red-500"
+                />
+              </button>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ const Button = ({
   iconclass = "",
   iconSize = 16,
 }) => {
-  const baseClasses = `rounded-lg font-inter weight-medium text-sm flex items-center gap-1 p-4 hover:outline-1 ${
+  const baseClasses = `rounded-lg font-inter weight-medium text-sm flex items-center gap-1 p-4 hover:outline-1 hover:cursor-pointer ${
     state === "primary" ? "hover:outline-dark-gray" : "hover:outline-blue"
   }  `;
 
