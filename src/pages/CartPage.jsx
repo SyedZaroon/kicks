@@ -17,6 +17,7 @@ const CartPage = () => {
   // Save cart when changed
   const updateLocalStorage = (updatedCart) => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    window.dispatchEvent(new Event("cart-updated"));
   };
 
   // remove item

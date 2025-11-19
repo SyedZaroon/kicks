@@ -7,12 +7,10 @@ const ProductFilter = () => {
 
   return (
     <>
-      {/* ✅ Desktop sidebar */}
       <div className="lg:flex hidden w-64">
         <ProductFilterContent />
       </div>
 
-      {/* ✅ Mobile filter button */}
       <div className="lg:hidden flex">
         <button
           className="px-4 py-2 border rounded-md text-sm font-medium"
@@ -22,7 +20,6 @@ const ProductFilter = () => {
         </button>
       </div>
 
-      {/* ✅ Mobile sidebar overlay */}
       {showSidebar && (
         <div className="fixed inset-0 bg-black/50 z-50 flex justify-end">
           <div className="bg-white w-80 h-full p-4 shadow-lg overflow-y-auto">

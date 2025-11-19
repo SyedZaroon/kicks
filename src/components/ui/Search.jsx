@@ -74,9 +74,8 @@ const Search = ({ isOpen, onClose }) => {
         {isProductsLoading && <div>Loading...</div>}
         {productsError && <div>Error loading products</div>}
 
-        {/* Scrollable product list */}
         <div className="lg:p-8 p-4 overflow-y-auto flex-1">
-          <div className="grid grid-cols-[repeat(4,229px)] gap-2">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4">
             {productsToShow.map((product) => (
               <Link
                 href={`/product/${product.slug}`}
